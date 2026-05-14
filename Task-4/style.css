@@ -1,0 +1,200 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+}
+
+html, body {
+    min-height: 100vh;
+    width: 100%;
+    background-color: white;
+    padding: 10px; 
+}
+
+main {
+    width: 100%;
+    height: calc(100vh - 20px); 
+    background-image: url(Timage4.avif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav .left h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.nav .right {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav .right h1 {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.nav .right h1:hover {
+    opacity: 0.8;
+}
+
+.nav .right h1:last-child {
+    border: 1px solid white;
+    padding: 12px 25px;
+    border-radius: 2px;
+}
+
+.nav .right h1:last-child:hover {
+    background-color: white;
+    color: black;
+    opacity: 1;
+}
+
+main  h1 {
+    font-size: 120px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 5px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+main  h2 {
+    font-size: clamp(14px, 1.5vw, 24px);
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+main  h3 {
+    font-size: 0;
+    width: 50px;
+    height: 3px;
+    background-color: white;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* --- LATEST ARTICLES SECTION --- */
+section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #f8f8f8; 
+}
+
+section  h1:first-child {
+    color: black;
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+section  h1:nth-child(2) {
+    font-size: 0;
+    width: 40px;
+    height: 3px;
+    background-color: black;
+    margin: 15px auto 50px auto;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap; 
+}
+
+.box  div {
+    background-color: white;
+    width: 320px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08); 
+    padding-bottom: 40px;
+}
+
+.box img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background-color: #ccc; 
+}
+
+.box h3 {
+    font-size: 0;
+    width: 30px;
+    height: 2px;
+    background-color: black;
+    margin: 30px auto 20px auto;
+}
+
+.box h2 {
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 20px;
+    line-height: 1.5;
+}
+
+/* --- RESPONSIVE DESIGN FOR HALF SCREEN / MOBILE --- */
+@media (max-width: 900px) {
+    .nav {
+        padding: 20px 20px;
+    }
+    .nav .left h1 {
+        font-size: 20px;
+    }
+    .nav .right {
+        gap: 20px;
+    }
+    .nav .right h1 {
+        font-size: 14px;
+    }
+    .nav .right h1:last-child {
+        padding: 8px 15px;
+    }
+    main h1 {
+        font-size: 80px; /* user edit */
+    }
+    .box  div {
+        width: 100%;
+        height: 50%;
+        padding-bottom: 80px; /* user edit */
+    }
+    .box h3 {
+        margin: 75px auto 20px auto; /* user edit */
+    }
+}
+
+@media (max-width: 500px) {
+    main h1 {
+        font-size: 50px;
+    }
+    .nav {
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 30px;
+    }
+}
