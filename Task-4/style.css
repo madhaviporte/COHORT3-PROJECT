@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: white;
 }
 
 html, body {
@@ -25,6 +24,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: white;
     
 }
 
@@ -158,6 +158,159 @@ section  h1:nth-child(2) {
     line-height: 1.5;
 }
 
+/* --- FOOTER SECTION --- */
+footer {
+    display: flex;
+    width: 100%;
+    background-color: white;
+}
+
+.footer-image {
+    width: 50%;
+}
+
+.footer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.footer-content {
+    width: 50%;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-content h1 {
+    color: black;
+    font-size: 45px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.footer-content h2 {
+    font-size: 0;
+    width: 40px;
+    height: 3px;
+    background-color: black;
+    margin: 15px auto 30px auto;
+}
+
+.footer-content p {
+    color: black;
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 550px;
+    font-weight: 500;
+}
+
+/* --- BOTTOM NEWSLETTER SECTION --- */
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f8f8;
+    width: 100%;
+    padding-top: 80px;
+}
+
+.bottom-section h1 {
+    color: black;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.bottom-section h2 {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.bottom-section input {
+    width: 250px;
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: black;
+    text-align: center;
+}
+
+.bottom-section button {
+    padding: 10px 40px;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 80px;
+    transition: all 0.3s ease;
+}
+
+.bottom-section button:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Hide menu icon on desktop */
+.menu-icon {
+    display: none;
+}
+
+.bottom-nav {
+    width: 100%;
+    background-color: white;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-nav-left {
+    display: flex;
+    gap: 20px;
+}
+
+.bottom-nav-left i {
+    color: black;
+    font-size: 24px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.bottom-nav-left i:hover {
+    opacity: 0.7;
+}
+
+.bottom-nav-right {
+    display: flex;
+    gap: 30px;
+}
+
+.bottom-nav-right h1 {
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.bottom-nav-right h1:hover {
+    opacity: 0.7;
+}
+
+
 /* --- RESPONSIVE DESIGN FOR HALF SCREEN / MOBILE --- */
 @media (max-width: 900px) {
     .nav {
@@ -170,21 +323,51 @@ section  h1:nth-child(2) {
         gap: 20px;
     }
     .nav .right h1 {
-        font-size: 14px;
+        display: none; 
     }
-    .nav .right h1:last-child {
-        padding: 8px 15px;
+    .nav .right .menu-icon {
+        display: block; 
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
     }
     main h1 {
-        font-size: 80px; /* user edit */
+        font-size: 80px; 
     }
     .box  div {
         width: 100%;
         height: 50%;
-        padding-bottom: 80px; /* user edit */
+        padding-bottom: 80px; 
     }
     .box h3 {
-        margin: 75px auto 20px auto; /* user edit */
+        margin: 75px auto 20px auto; 
+    }
+
+    /* Footer Responsive (Half Screen) */
+    footer {
+        flex-direction: column;
+    }
+    .footer-image {
+        width: 100%;
+        height: 300px; 
+    }
+    .footer-content {
+        width: 100%;
+        padding: 50px 20px;
+    }
+    /* Bottom Newsletter Responsive (Half Screen) */
+    .bottom-section input {
+        width: 80%;
+    }
+    .bottom-nav {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 30px;
+    }
+    .bottom-nav-right {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
     }
 }
 
@@ -193,8 +376,7 @@ section  h1:nth-child(2) {
         font-size: 50px;
     }
     .nav {
-        flex-direction: column;
-        gap: 15px;
-        padding-top: 30px;
+        flex-direction: row;
+        padding-top: 20px;
     }
 }
