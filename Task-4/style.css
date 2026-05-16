@@ -13,7 +13,7 @@ html, body {
     padding: 10px; 
 }
 
-main {
+.hero {
     width: 100%;
     height: calc(100vh - 20px); 
     background-image: url(Timage4.avif);
@@ -75,7 +75,7 @@ main {
     opacity: 1;
 }
 
-main  h1 {
+.hero h1 {
     font-size: 120px;
     font-weight: 800;
     letter-spacing: 5px;
@@ -83,7 +83,7 @@ main  h1 {
     text-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-main  h2 {
+.hero h2 {
     font-size: clamp(14px, 1.5vw, 24px);
     font-weight: 600;
     letter-spacing: 2.5px;
@@ -91,7 +91,7 @@ main  h2 {
     text-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-main  h3 {
+.hero h3 {
     font-size: 0;
     width: 50px;
     height: 3px;
@@ -125,7 +125,8 @@ section  h1:nth-child(2) {
 .box {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 50px;
+    height: ;
     flex-wrap: wrap; 
 }
 
@@ -284,7 +285,7 @@ section  h1:nth-child(2) {
         color: white;
         cursor: pointer;
     }
-    main h1 {
+    .hero h1 {
         font-size: 80px; 
     }
     .box  div {
@@ -314,7 +315,7 @@ section  h1:nth-child(2) {
 }
 
 @media (max-width: 500px) {
-    main h1 {
+    .hero h1 {
         font-size: 50px;
     }
     .nav {
