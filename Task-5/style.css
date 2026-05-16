@@ -133,7 +133,7 @@ section  h1:nth-child(2) {
 .box  div {
     background-color: white;
     width: 320px;
-    box-shadow: 0 15px 35px rgba(19, 18, 18, 0.1);
+    box-shadow: 0 15px 35px rgb(0, 0, 0);
     padding-bottom: 40px;
 }
 
