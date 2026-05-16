@@ -133,7 +133,7 @@ section  h1:nth-child(2) {
 .box  div {
     background-color: white;
     width: 320px;
-    box-shadow: 0 15px 35px rgba(25, 24, 24, 0.1);
+    box-shadow: 0 15px 35px rgba(19, 18, 18, 0.1);
     padding-bottom: 40px;
 }
 
@@ -216,7 +216,7 @@ Bottom img {
     align-items: center;
     background-color: #f8f8f8;
     width: 100%;
-    padding-top: 90px;
+    padding-top: 200px;
 }
 
 .bottom-section h1 {
@@ -337,6 +337,8 @@ Bottom img {
     }
     .box {
         height: auto;
+    box-shadow: 0 15px 35px rgba(19, 18, 18, 0.1);
+
     }
     .box  div {
         width: 100%;
@@ -367,7 +369,7 @@ Bottom img {
     }
     .bottom-nav {
         flex-direction: column;
-        padding: 30px 20px;
+        padding: 90px 70px;
         gap: 30px;
     }
     .bottom-nav-right {
