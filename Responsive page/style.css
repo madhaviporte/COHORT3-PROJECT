@@ -959,6 +959,199 @@ body {
     cursor: pointer;
 }
 
+/* Lattes Section */
+.lattes-section {
+    padding: 150px 15%;
+    background-color: #A96E38;
+    text-align: center;
+    position: relative;
+    /* Removed overflow: hidden so badge can overlap top border */
+}
+
+.lattes-header {
+    margin-bottom: 50px;
+    color: white;
+}
+
+.lattes-badge {
+    display: inline-block;
+    background-color: #f7eed7; /* Light beige/cream */
+    color: #000;
+    padding: 8px 15px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    transform: rotate(-2deg);
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    text-transform: uppercase;
+}
+
+.lattes-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.half-screen-br {
+    display: none;
+}
+
+.lattes-subtitle {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.lattes-slider-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #F8C895; /* Peach Beige */
+    border-radius: 12px;
+    padding: 80px 60px;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.lattes-delicious-badge {
+    position: absolute;
+    top: 0;
+    right: 15%;
+    transform: translateY(-50%);
+    background-color: #e5b4cc; /* Pink background */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99; /* Ensure it's above everything */
+    pointer-events: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.lattes-nav-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: 1.5px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.3s;
+}
+
+.lattes-nav-btn:hover {
+    background: #f5f5f5;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lattes-nav-btn.prev {
+    left: -25px;
+}
+
+.lattes-nav-btn.next {
+    right: -25px;
+}
+
+.lattes-content-box {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 40px;
+}
+
+.lattes-image-col {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lattes-img {
+    max-width: 80%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+}
+
+.lattes-shadow {
+    width: 70%;
+    height: 15px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 50%;
+    margin-top: 5px;
+    filter: blur(8px);
+}
+
+.lattes-text-col {
+    flex: 1;
+    text-align: left;
+    padding-right: 40px;
+}
+
+.lattes-tag {
+    display: inline-block;
+    border: 1.5px solid #000;
+    background: transparent;
+    padding: 4px 12px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.lattes-name {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.lattes-desc {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #444;
+    margin-bottom: 30px;
+    max-width: 400px;
+}
+
+.lattes-shop-btn {
+    background: white;
+    border: 1.5px solid #000;
+    border-radius: 30px;
+    padding: 12px 35px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lattes-shop-btn:hover {
+    background: #000;
+    color: white;
+}
+
 /* Cafe & Wholesale Section */
 .cafe-wholesale {
     display: flex;
@@ -1193,6 +1386,43 @@ body {
         flex: 0 0 25%;
         min-height: 250px;
         padding: 15px;
+    }
+
+    .lattes-section {
+        padding: 60px 5%;
+    }
+    
+    .lattes-slider-wrapper {
+        padding: 40px 20px;
+    }
+    
+    .half-screen-br {
+        display: block;
+    }
+    
+    .lattes-content-box {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .lattes-text-col {
+        padding-right: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lattes-delicious-badge {
+        width: 90px;
+        height: 90px;
+        right: 5%;
+    }
+
+    .lattes-img {
+        max-width: 100%;
+        max-height: 300px;
     }
 
     .cafe-wholesale {
