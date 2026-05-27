@@ -2167,3 +2167,316 @@ body {
     }
 }
 
+/* ==========================================
+   PAGE 10: Footer / Steep With Us
+   ========================================== */
+.footer-section {
+    background-color: #CBE2FE; 
+    font-family: 'Inter', sans-serif;
+    color: #333;
+}
+
+/* Newsletter Section */
+.newsletter-container-v2 {
+    text-align: center;
+    padding: 60px 4% 40px;
+}
+
+.newsletter-title-v2 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+    color: #1a1a1a;
+}
+
+.newsletter-desc-v2 {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.newsletter-bottom-v2 {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.nl-spacer {
+    display: block;
+}
+
+.newsletter-form-v2 {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+}
+
+.newsletter-input-v2 {
+    width: 250px;
+    padding: 12px 20px;
+    border: 2px solid #1a1a1a;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    background: white;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.newsletter-input-v2::placeholder {
+    color: #999;
+}
+
+.newsletter-submit-v2 {
+    background-color: #2e2b5c;
+    color: white;
+    border: 2px solid #2e2b5c;
+    padding: 12px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: background-color 0.3s;
+    margin-left: 20px;
+}
+
+.newsletter-submit-v2:hover {
+    background-color: #1d1b3f;
+}
+
+.newsletter-socials-v2 {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.newsletter-socials-v2 a {
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #1a1a1a;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.newsletter-socials-v2 a:hover {
+    background-color: #2e2b5c;
+    color: white;
+    border-color: #2e2b5c;
+}
+
+/* Footer Links Area */
+.footer-links-container {
+    background-color: #2e2b5c;
+    color: white;
+    padding: 40px 5%;
+    border-radius: 0;
+    margin: 0;
+}
+
+.footer-accordion {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.accordion-item {
+    flex: 1;
+    min-width: 120px;
+}
+
+.accordion-header {
+    background: none;
+    border: none;
+    color: white;
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: -0.2px;
+}
+
+.accordion-header .acc-icon {
+    display: none; /* Hidden on desktop */
+    width: 18px;
+    height: 18px;
+    color: #a3c2f0;
+}
+
+.accordion-content {
+    display: block; /* Visible on desktop */
+}
+
+.accordion-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.accordion-content li {
+    margin-bottom: 10px;
+}
+
+.accordion-content a {
+    color: #a3c2f0;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.2px;
+    transition: color 0.2s;
+}
+
+.accordion-content a:hover {
+    color: white;
+}
+
+/* Landscape footer block */
+.footer-landscape {
+    position: relative;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 20px;
+    background-image: url('https://www.twoleavestea.com/cdn/shop/t/142/assets/background-mountain-desktop.svg'); /* Just an example */
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    border-bottom: 4px solid #1a1a1a;
+}
+
+.footer-logo-img {
+    height: 90px;
+    margin-bottom: 50px;
+    width: auto;
+}
+
+.footer-landscape-copyright {
+    font-size: 0.6rem;
+    color: #555;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Responsive: page-10 (Half Screen / Tablet) */
+@media (max-width: 1024px) {
+    .newsletter-bottom-v2 {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 25px;
+    }
+    
+    .nl-spacer {
+        display: none;
+    }
+    
+    .newsletter-socials-v2 {
+        justify-content: center;
+    }
+}
+
+/* Page 10: Stacked Accordion for smaller viewports */
+@media (max-width: 800px) {
+    .newsletter-container-v2 {
+        text-align: left;
+        padding: 40px 5% 30px;
+    }
+
+    .newsletter-title-v2, .newsletter-desc-v2 {
+        text-align: left;
+    }
+
+    .newsletter-form-v2 {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .newsletter-input-v2 {
+        width: 100%;
+        margin-bottom: 15px;
+        text-align: left;
+        padding: 14px 20px;
+    }
+
+    .newsletter-submit-v2 {
+        margin-left: 0;
+        width: 100%;
+        padding: 14px 20px;
+        text-align: center;
+    }
+    
+    .newsletter-socials-v2 {
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .footer-links-container {
+        padding: 5px 5% 20px;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .footer-accordion {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .accordion-item {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .accordion-item:last-child {
+        border-bottom: none;
+    }
+
+    .accordion-header {
+        padding: 18px 0;
+        margin-bottom: 0;
+        cursor: pointer;
+        font-size: 0.95rem;
+    }
+
+    .accordion-header .acc-icon {
+        display: block; /* Show icon on mobile */
+        transition: transform 0.3s;
+    }
+
+    /* Accordion logic hidden by default for mobile */
+    .accordion-content {
+        display: none;
+        padding-bottom: 15px;
+    }
+
+    /* Active state added by JS */
+    .accordion-item.active .accordion-content {
+        display: block;
+    }
+    
+    .accordion-item.active .acc-icon {
+        transform: rotate(180deg);
+    }
+}
+
+ 
+ 

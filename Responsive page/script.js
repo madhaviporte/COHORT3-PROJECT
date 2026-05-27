@@ -108,4 +108,26 @@ document.addEventListener('DOMContentLoaded', () => {
             lattesBadge.style.transform = `translateY(-50%) rotate(${scrolled * 0.25}deg)`;
         }
     });
+
+    // Page 10: Footer Accordion Logic
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            // Only active on mobile view (when acc-icon is visible or display is block/not none)
+            if (window.innerWidth <= 800) {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items (optional, standard accordion behavior)
+                document.querySelectorAll('.accordion-item').forEach(accItem => {
+                    accItem.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            }
+        });
+    });
 });
