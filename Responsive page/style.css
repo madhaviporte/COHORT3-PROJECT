@@ -2116,3 +2116,60 @@ body {
     }
 }
 
+/* tea-image-area: hidden on desktop */
+.tea-image-area {
+    display: none;
+}
+
+/* Page-9: Vertical stack below 800px */
+@media (max-width: 800px) {
+    .tea-section {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: unset;
+        padding: 0;
+        background-image: none;
+    }
+
+    /* Full-width image shown at top */
+    .tea-image-area {
+        display: block;
+        width: 100%;
+        height: 280px;
+        background-image: url('https://www.twoleavestea.com/cdn/shop/files/Two_Leaves_Tea_Aug_25_Shoot-14x_SQ_1_d549e6bb-f1ad-4b36-a851-05e1af195a31.webp?v=1771593222&width=3600.0');
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .tea-box {
+        width: 100%;
+        margin-top: 0;
+        min-height: unset;
+        border-radius: 0;
+        padding: 35px 6%;
+        gap: 16px;
+        box-shadow: none;
+        animation: none;
+        text-align: center;
+        align-items: center;
+    }
+
+    .tea-box-heading {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .tea-box-desc {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .tea-box-btn {
+        align-self: center;
+        padding: 12px 32px;
+        font-size: 0.9rem;
+        padding-inline: 250px;
+    }
+}
+
+
