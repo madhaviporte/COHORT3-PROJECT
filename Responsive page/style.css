@@ -581,6 +581,7 @@ body {
 .discovery-header {
     margin-bottom: 50px;
     width: 100%;
+    max-width: 800px; /* Unified width */
 }
 
 .discovery-badge {
@@ -630,7 +631,7 @@ body {
 }
 
 .vibe-section {
-    max-width: 1200px;
+    max-width: 800px; /* Unified with search and header */
     width: 100%;
     display: flex;
     flex-direction: column;
