@@ -568,6 +568,109 @@ body {
     opacity: 1;
 }
 
+/* Discovery Section */
+.discovery {
+    padding: 100px 8%;
+    background-color: var(--bg-cream);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.discovery-header {
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.discovery-badge {
+    display: inline-block;
+    background-color: #E67A33; /* Orange badge */
+    color: #000;
+    padding: 8px 20px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    transform: rotate(-1deg);
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+.discovery-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    color: #333;
+    font-weight: 400;
+}
+
+.discovery-title em {
+    font-style: italic;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 60px;
+}
+
+.discovery-search {
+    width: 100%;
+    padding: 20px 30px;
+    border: 1.5px solid #000;
+    border-radius: 12px;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: box-shadow 0.3s;
+}
+
+.discovery-search:focus {
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.vibe-section {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vibe-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #888;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.vibe-tag {
+    background-color: #E3F2FD; /* Light blue */
+    color: #333;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vibe-tag:hover {
+    background-color: #D1E9FB;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
 /* Responsive Styles */
 @media (max-width: 1024px) {
     .navbar {
@@ -632,6 +735,18 @@ body {
     .section-badge {
         font-size: 1.4rem;
         margin-bottom: 30px;
+    }
+
+    .discovery {
+        padding: 60px 8%;
+    }
+
+    .discovery-title {
+        font-size: 1.8rem;
+    }
+
+    .discovery-search {
+        padding: 15px 20px;
     }
 }
 
