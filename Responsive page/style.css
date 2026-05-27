@@ -1013,7 +1013,7 @@ body {
     background-color: #F8C895; /* Peach Beige */
     border-radius: 12px;
     padding: 80px 60px;
-    min-height: 500px;
+    min-height: 1000px;
     display: flex;
     align-items: center;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -1073,8 +1073,9 @@ body {
 .lattes-content-box {
     display: flex;
     width: 100%;
-    align-items: center;
+    /* align-items: center; */
     gap: 40px;
+    margin-bottom: 500px;
 }
 
 .lattes-image-col {

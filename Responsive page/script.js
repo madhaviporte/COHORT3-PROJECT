@@ -101,19 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.transform = `translateY(${shift}px)`;
         });
 
-        // Translate lattes badge vertically based on scroll position (no rotation)
+        // Rotate lattes badge based on scroll position
         const lattesBadge = document.querySelector('.lattes-delicious-badge');
         if (lattesBadge) {
-            const isMobile = window.innerWidth <= 768;
-            const badgeSpeed = isMobile ? 0.08 : 0.15;
-            
-            const badgeRect = lattesBadge.getBoundingClientRect();
-            const vpCenter = window.innerHeight / 2;
-            const badgeCenter = badgeRect.top + badgeRect.height / 2;
-            
-            const badgeShift = (badgeCenter - vpCenter) * badgeSpeed;
-            // Original translateY(-50%) must remain to keep it on border, then add shift
-            lattesBadge.style.transform = `translateY(calc(-50% + ${badgeShift}px))`;
+            // Adjust multiplier for rotation speed. Original translateY(-50%) must remain to keep it on border.
+            lattesBadge.style.transform = `translateY(-50%) rotate(${scrolled * 0.25}deg)`;
         }
     });
 });
