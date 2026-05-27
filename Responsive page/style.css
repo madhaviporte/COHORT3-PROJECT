@@ -1995,3 +1995,124 @@ body {
         gap: 30px;
     }
 }
+
+/* ==========================================
+   PAGE 9: Tea Hero Section
+   ========================================== */
+.tea-section {
+    position: relative;
+    min-height: 85vh;
+    background-image: url('https://www.twoleavestea.com/cdn/shop/files/Two_Leaves_Tea_Aug_25_Shoot-14x_SQ_1_d549e6bb-f1ad-4b36-a851-05e1af195a31.webp?v=1771593222&width=3600.0');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-start;
+    padding: 60px 5%;
+    overflow: hidden;
+}
+
+/* Orange Box on the Left */
+.tea-box {
+    background-color: #E8611A;
+    width: 350px;
+    min-height: 500px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 4px;
+    gap: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeSlideIn 0.8s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tea-box-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.tea-box-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+}
+
+.tea-box-btn {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #333333;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    letter-spacing: 0.3px;
+}
+
+.tea-box-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive: page-9 */
+@media (max-width: 1024px) {
+    .tea-section {
+        min-height: 60vh;
+        padding: 50px 5%;
+    }
+    .tea-box {
+        width: 240px;
+        min-height: 320px;
+        padding: 30px 24px;
+    }
+    .tea-box-heading {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tea-section {
+        min-height: 70vh;
+        padding: 40px 5%;
+        background-position: right center;
+    }
+    .tea-box {
+        width: 220px;
+        min-height: 300px;
+        padding: 25px 20px;
+        gap: 15px;
+    }
+    .tea-box-heading {
+        font-size: 1.7rem;
+    }
+    .tea-box-desc {
+        font-size: 0.85rem;
+    }
+    .tea-box-btn {
+        padding: 10px 22px;
+        font-size: 0.85rem;
+    }
+}
+
