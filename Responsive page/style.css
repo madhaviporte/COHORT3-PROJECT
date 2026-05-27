@@ -1390,7 +1390,7 @@ body {
     }
 
     .lattes-section {
-        padding: 60px 5%;
+        padding: 40px 5%;
     }
     
     .lattes-slider-wrapper {
@@ -1403,6 +1403,7 @@ body {
     
     .lattes-content-box {
         flex-direction: column;
+        height: 200px;
         gap: 30px;
         text-align: center;
     }
