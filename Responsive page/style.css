@@ -959,6 +959,75 @@ body {
     cursor: pointer;
 }
 
+/* Cafe & Wholesale Section */
+.cafe-wholesale {
+    display: flex;
+    min-height: 80vh;
+    background-color: #2A2B5F; /* Deep Navy from screenshot */
+}
+
+.cafe-left, .cafe-right {
+    flex: 1;
+}
+
+.cafe-left {
+    position: relative;
+    overflow: hidden;
+}
+
+.cafe-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cafe-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8% 10%;
+    color: white;
+}
+
+.cafe-info {
+    max-width: 500px;
+}
+
+.cafe-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.cafe-desc {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.5;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.btn-learn {
+    background: white;
+    color: #2A2B5F;
+    padding: 15px 40px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-learn:hover {
+    background-color: transparent;
+    color: white;
+    box-shadow: inset 0 0 0 2px white;
+    transform: translateY(-3px);
+}
+
 /* Responsive Styles */
 @media (max-width: 1024px) {
     .navbar {
@@ -1124,6 +1193,19 @@ body {
         flex: 0 0 25%;
         min-height: 250px;
         padding: 15px;
+    }
+
+    .cafe-wholesale {
+        flex-direction: column; /* Vertical stack */
+    }
+
+    .cafe-left {
+        min-height: 400px;
+    }
+
+    .cafe-right {
+        padding: 50px 8%;
+        text-align: center;
     }
 }
 

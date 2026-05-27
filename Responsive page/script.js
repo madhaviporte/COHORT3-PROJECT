@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrolled = window.scrollY;
         
         // Target all major headings and components for the movement effect
-        const movingElements = document.querySelectorAll('.quote-text, .discovery-title, .origins-title, .origins-desc, .origins-values, .reviews-header');
+        const movingElements = document.querySelectorAll('.quote-text, .discovery-title, .origins-title, .origins-desc, .origins-values, .reviews-header, .cafe-title');
         
         movingElements.forEach(el => {
             // Adjust speed for mobile for better performance and feel
