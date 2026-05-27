@@ -70,10 +70,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.querySelectorAll('.hero-content > *').forEach(el => {
+    document.querySelectorAll('.hero-content > *, .quote-text, .section-badge, .discovery-header, .origins-content > *').forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.6s ease-out';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
         observer.observe(el);
+    });
+
+    // Pronounced parallax movement on scroll
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        
+        // Target all major headings and components for the movement effect
+        const movingElements = document.querySelectorAll('.quote-text, .discovery-title, .origins-title, .origins-desc, .origins-values');
+        
+        movingElements.forEach(el => {
+            // Adjust speed for mobile for better performance and feel
+            const isMobile = window.innerWidth <= 768;
+            const speed = isMobile ? 0.08 : 0.15; // Slower on mobile
+            
+            const rect = el.getBoundingClientRect();
+            const viewportCenter = window.innerHeight / 2;
+            const elementCenter = rect.top + rect.height / 2;
+            
+            // Calculate distance from center to determine shift
+            const distanceFromCenter = elementCenter - viewportCenter;
+            const shift = distanceFromCenter * speed;
+            
+            // Apply the floating movement
+            el.style.transform = `translateY(${shift}px)`;
+        });
     });
 });
