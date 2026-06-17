@@ -29,10 +29,10 @@
 
   <div class="app-container">
 
-    <main class="main-grid">
+    <main class="app-layout">
       
-      <!-- Left Column: App & Tools -->
-      <section class="left-col">
+      <!-- Row 1: Task Management and Tasks List -->
+      <section class="row-flex">
         
         <!-- Task Form Panel -->
         <article class="glass-panel form-panel">
@@ -85,9 +85,8 @@
         </article>
       </section>
 
-      <!-- Right Column: Educational Sections -->
-      <section class="right-col">
-        
+      <!-- Row 2: Event Propagation Demo (Full Screen/Width) -->
+      <section class="row-full">
         <!-- Interactive Propagation Demo -->
         <article class="glass-panel prop-demo-panel">
           <h2>Event Propagation Demo</h2>
@@ -111,7 +110,10 @@
             <button id="clear-log-btn" class="btn btn-small">Clear Log</button>
           </div>
         </article>
+      </section>
 
+      <!-- Row 3: DOM & Pipeline Concepts (Full Page/Screen) -->
+      <section class="row-full full-page-section">
         <!-- Educational Content -->
         <article class="glass-panel info-panel">
           <h2>DOM & Pipeline Concepts</h2>
@@ -147,7 +149,6 @@
             <p>Instead of manually attaching event listeners to each task card, we place one single <code>addEventListener</code> on the parent container. We then check <code>event.target</code> to figure out what was clicked. This drastically improves memory efficiency and automatically handles future dynamic elements.</p>
           </details>
         </article>
-
       </section>
 
     </main>

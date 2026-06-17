@@ -26,10 +26,10 @@
   --glass-bg: rgba(0, 0, 0, 0.8);
   --glass-border: rgba(184, 134, 11, 0.4);
   --glass-shadow: 0 8px 32px rgba(139, 0, 0, 0.4);
-  --text-primary: #ffcc00;
-  --text-secondary: #b8860b;
-  --primary-color: #8b0000;
-  --primary-hover: #a50000;
+  --text-primary: #ac9850;
+  --text-secondary: #9e740b;
+  --primary-color: #660505;
+  --primary-hover: #960c0c;
   --nested-bg: rgba(139, 0, 0, 0.15);
   --nested-border: rgba(184, 134, 11, 0.2);
 }
@@ -103,22 +103,36 @@ body {
    LAYOUT & CONTAINERS
 ======================================== */
 .app-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  padding: 2rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.main-grid {
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.row-flex {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr minmax(400px, 600px);
   gap: 2rem;
 }
 
 @media (max-width: 900px) {
-  .main-grid { grid-template-columns: 1fr; }
+  .row-flex { grid-template-columns: 1fr; }
+}
+
+.row-full {
+  width: 100%;
+}
+
+.full-page-section {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Glassmorphism Classes */
@@ -220,7 +234,7 @@ input:focus, select:focus {
 
 .btn-primary {
   background: var(--primary-color);
-  color: white;
+  color: rgba(255, 255, 255, 0.753);
   border: none;
 }
 
