@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DOM Explorer - Interactive Task Manager demonstrating DOM concepts.">
+  <title>DOM Explorer | Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Animated Shapes -->
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  <div class="bg-shape shape-3"></div>
+
+  <div class="app-container">
+    <header class="glass-panel">
+      <div>
+        <h1>DOM Explorer</h1>
+        <p>Interactive Task Manager & DOM Playground</p>
+      </div>
+      <button id="theme-toggle" class="btn" data-action="toggle-theme">
+        Toggle Theme
+      </button>
+    </header>
+
+    <main class="main-grid">
+      
+      <!-- Left Column: App & Tools -->
+      <section class="left-col">
+        
+        <!-- Task Form Panel -->
+        <article class="glass-panel form-panel">
+          <h2>Task Management</h2>
+          <form id="task-form">
+            <div class="input-group">
+              <label for="task-input">Task Name:</label>
+              <input type="text" id="task-input" value="" placeholder="e.g., Learn Event Delegation" required>
+            </div>
+            
+            <div class="input-group">
+              <label for="task-category">Category:</label>
+              <select id="task-category">
+                <option value="learn">Learn</option>
+                <option value="build">Build</option>
+                <option value="read">Read</option>
+              </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="add-task-btn">Add Task</button>
+          </form>
+
+          <hr>
+          
+          <!-- Attributes vs Properties Demo -->
+          <div class="attr-demo-panel">
+            <h3>Attributes vs Properties Demo</h3>
+            <p class="small-text">Type in the task name input above and see the difference:</p>
+            <div class="demo-display">
+              <div class="demo-box">
+                <strong>Property (<span>input.value</span>):</strong>
+                <code id="prop-output">""</code>
+              </div>
+              <div class="demo-box">
+                <strong>Attribute (<span>input.getAttribute('value')</span>):</strong>
+                <code id="attr-output">""</code>
+              </div>
+            </div>
+            <p class="hint"><strong>Note:</strong> Properties map to live DOM state, while Attributes map to initial HTML values.</p>
+          </div>
+        </article>
+
+        <!-- Tasks List Panel -->
+        <article class="glass-panel tasks-panel">
+          <h2>Your Tasks</h2>
+          <p class="small-text">Tasks are mapped using DOM creation and <strong>Event Delegation</strong>.</p>
+          <div id="tasks-container">
+            <!-- Dynamic Tasks will be rendered here -->
+          </div>
+        </article>
+      </section>
+
+      <!-- Right Column: Educational Sections -->
+      <section class="right-col">
+        
+        <!-- Interactive Propagation Demo -->
+        <article class="glass-panel prop-demo-panel">
+          <h2>Event Propagation Demo</h2>
+          <div class="toggle-mode">
+            <label><input type="radio" name="prop-mode" value="bubble" checked> Bubbling Phase</label>
+            <label><input type="radio" name="prop-mode" value="capture"> Capturing Phase</label>
+            <label><input type="checkbox" id="stop-prop-check"> stopPropagation()</label>
+          </div>
+          
+          <div id="grandparent" class="nested-box">
+            Grandparent
+            <div id="parent" class="nested-box">
+              Parent
+              <button id="child-btn" class="btn btn-child">Child Button</button>
+            </div>
+          </div>
+          
+          <div class="console-log">
+            <h4>Event Execution Log:</h4>
+            <ul id="prop-log-list"></ul>
+            <button id="clear-log-btn" class="btn btn-small">Clear Log</button>
+          </div>
+        </article>
+
+        <!-- Educational Content -->
+        <article class="glass-panel info-panel">
+          <h2>DOM & Pipeline Concepts</h2>
+          
+          <details class="concept">
+            <summary>1. Browser Rendering Pipeline</summary>
+            <ul>
+              <li><strong>HTML Parsing & Tokenization:</strong> The browser reads raw bytes, converts them to characters, tokens, nodes, and finally builds the DOM tree.</li>
+              <li><strong>CSSOM Tree Creation:</strong> CSS rules are parsed into the CSS Object Model tree.</li>
+              <li><strong>Render Tree:</strong> The visual combining of DOM and CSSOM. Nodes that are hidden (`display: none`) are omitted.</li>
+              <li><strong>Layout & Painting:</strong> The browser computes positions/sizes (Layout) and draws pixels on the screen (Painting).</li>
+            </ul>
+          </details>
+
+          <details class="concept">
+            <summary>2. DOM Tree & Manipulation</summary>
+            <p>The DOM (Document Object Model) is a structural tree of objects representing HTML. Methods like <code>append()</code>, <code>prepend()</code>, <code>after()</code>, <code>before()</code>, <code>replaceWith()</code>, and <code>remove()</code> let us dynamically alter this architecture in JS.</p>
+          </details>
+          
+          <details class="concept">
+            <summary>3. Attributes vs Properties</summary>
+            <p><strong>Attributes</strong> are defined by HTML tags and are generally static strings representing default state. <br><strong>Properties</strong> are values belonging to the DOM object node in Javascript. They represent current live state and can be booleans, arrays, objects, etc.</p>
+          </details>
+
+          <details class="concept">
+            <summary>4. Event Bubbling & Capturing</summary>
+            <p><strong>Bubbling:</strong> The event triggers on the deepest target element, then triggers upwards (Child -> Parent -> Grandparent).<br>
+            <strong>Capturing:</strong> The event travels downwards from the root to the target element (Grandparent -> Parent -> Child).</p>
+          </details>
+
+          <details class="concept">
+            <summary>5. Event Delegation</summary>
+            <p>Instead of manually attaching event listeners to each task card, we place one single <code>addEventListener</code> on the parent container. We then check <code>event.target</code> to figure out what was clicked. This drastically improves memory efficiency and automatically handles future dynamic elements.</p>
+          </details>
+        </article>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
