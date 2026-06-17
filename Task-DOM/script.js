@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Using dataset (DOM Property)
     // htmlRoot.dataset.theme = newTheme; 
     
+    // Update button text accordingly
+    themeToggleBtn.textContent = newTheme === "dark" ? "Dark" : "Light";
+
     // 3. Using classList for demonstration
     document.body.classList.toggle("theme-changed");
     

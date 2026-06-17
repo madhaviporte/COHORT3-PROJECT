@@ -22,16 +22,16 @@
 
 [data-theme="dark"] {
   /* Dark Mode Tokens */
-  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  --glass-bg: rgba(15, 23, 42, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --primary-color: #60a5fa;
-  --primary-hover: #3b82f6;
-  --nested-bg: rgba(255,255,255,0.05);
-  --nested-border: rgba(255,255,255,0.1);
+  --bg-gradient: linear-gradient(135deg, #000000 0%, #111111 100%);
+  --glass-bg: rgba(0, 0, 0, 0.8);
+  --glass-border: rgba(184, 134, 11, 0.4);
+  --glass-shadow: 0 8px 32px rgba(139, 0, 0, 0.4);
+  --text-primary: #ffcc00;
+  --text-secondary: #b8860b;
+  --primary-color: #8b0000;
+  --primary-hover: #a50000;
+  --nested-bg: rgba(139, 0, 0, 0.15);
+  --nested-border: rgba(184, 134, 11, 0.2);
 }
 
 /* ========================================
@@ -95,6 +95,10 @@ body {
   100% { transform: translate(-50px, 100px) scale(0.9); }
 }
 
+[data-theme="dark"] .shape-1 { background: #8b0000; }
+[data-theme="dark"] .shape-2 { background: #b8860b; }
+[data-theme="dark"] .shape-3 { background: #220000; }
+
 /* ========================================
    LAYOUT & CONTAINERS
 ======================================== */
@@ -135,7 +139,19 @@ header.glass-panel {
   align-items: center;
 }
 
-header h1 {
+.full-width-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 3rem;
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.full-width-header h1 {
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: -0.5px;
