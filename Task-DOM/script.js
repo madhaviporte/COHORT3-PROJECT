@@ -2,9 +2,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================================================
-     1. THEME TOGGLE (Attributes, Properties, classList)
-     ========================================================= */
+    //  1. THEME TOGGLE (Attributes, Properties, classList)
+
   const themeToggleBtn = document.getElementById("theme-toggle");
   const htmlRoot = document.documentElement;
 
@@ -29,9 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* =========================================================
-     2. ATTRIBUTES VS PROPERTIES DEMO
-     ========================================================= */
+    //  2. ATTRIBUTES VS PROPERTIES DEMO
+
   const taskInput = document.getElementById("task-input");
   const propOutput = document.getElementById("prop-output");
   const attrOutput = document.getElementById("attr-output");
@@ -43,9 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* =========================================================
-     3. DOM MANIPULATION & TASK MANAGEMENT
-     ========================================================= */
+    //  3. DOM MANIPULATION & TASK MANAGEMENT
+
   const taskForm = document.getElementById("task-form");
   const taskCategory = document.getElementById("task-category");
   const tasksContainer = document.getElementById("tasks-container");
@@ -115,9 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================================================
-     4. EVENT DELEGATION
-     ========================================================= */
+    //  4. EVENT DELEGATION
+
   // Attach ONE event listener to the parent container
   tasksContainer.addEventListener("click", (e) => {
     // Find the closest task card that contains the clicked element
@@ -184,9 +180,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* =========================================================
-     5. EVENT PROPAGATION DEMONSTRATION
-     ========================================================= */
+    //  5. EVENT PROPAGATION DEMONSTRATION
+    
   const propLogList = document.getElementById("prop-log-list");
   const clearLogBtn = document.getElementById("clear-log-btn");
   const modeRadios = document.querySelectorAll('input[name="prop-mode"]');

@@ -1,6 +1,3 @@
-/*  ========================================
-    DOM EXPLORER - STYLES AND THEMING
-======================================== */
 
 :root {
   /* Light Mode Tokens */
@@ -34,9 +31,7 @@
   --nested-border: rgba(184, 134, 11, 0.2);
 }
 
-/* ========================================
-   RESETS & TYPOGRAPHY
-======================================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -53,7 +48,6 @@ body {
   transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* Animated BG Shapes for Premium Look */
 .bg-shape {
   position: fixed;
   border-radius: 50%;
@@ -99,9 +93,7 @@ body {
 [data-theme="dark"] .shape-2 { background: #b8860b; }
 [data-theme="dark"] .shape-3 { background: #220000; }
 
-/* ========================================
-   LAYOUT & CONTAINERS
-======================================== */
+
 .app-container {
   width: 100%;
   padding: 2rem 3rem;
@@ -135,7 +127,6 @@ body {
   flex-direction: column;
 }
 
-/* Glassmorphism Classes */
 .glass-panel {
   background: var(--glass-bg);
   backdrop-filter: blur(16px);
@@ -171,9 +162,7 @@ header.glass-panel {
   letter-spacing: -0.5px;
 }
 
-/* ========================================
-   COMPONENTS
-======================================== */
+
 
 hr {
   border: none;
@@ -192,7 +181,6 @@ h2, h3 {
   margin-bottom: 1rem;
 }
 
-/* Forms */
 .input-group {
   margin-bottom: 1rem;
   display: flex;
