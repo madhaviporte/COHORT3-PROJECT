@@ -1,0 +1,79 @@
+:root {
+  --bg-color: #F5F6FA;
+  --card-bg: #FFFFFF;
+  --text-primary: #000000;
+  --text-secondary: #6B7280;
+  --border-color: #E5E7EB;
+  --blue-selection: #DCEAFF;
+  --green: #16A34A;
+  --red: #DC2626;
+  --primary-blue: #3B82F6; /* Fallback for some interactive elements if needed */
+
+  --font-family: 'Inter', sans-serif;
+  --base-radius: 12px;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+  --bg-color: #111827;
+  --card-bg: #1F2937;
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --border-color: #374151;
+  --blue-selection: #374151;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-family);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input, select {
+  font-family: var(--font-family);
+}
+
+/* Toastify Custom Animations */
+@keyframes slideDownFadeIn {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOutSlideUp {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-20px); }
+}
+
+.custom-toast-enter {
+  animation: slideDownFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.custom-toast-exit {
+  animation: fadeOutSlideUp 0.3s ease-in forwards;
+}
+
+/* Tweak Toastify Default Styles to make them look Fintech-grade */
+.Toastify__toast {
+  border-radius: var(--base-radius);
+  font-family: var(--font-family);
+  font-weight: 500;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}

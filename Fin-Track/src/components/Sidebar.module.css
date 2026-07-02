@@ -1,0 +1,119 @@
+.sidebar {
+  width: 260px;
+  background-color: var(--card-bg);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  z-index: 50;
+  height: 100vh;
+}
+
+.logoContainer {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid transparent; /* matches screenshot empty space but standard structural practice */
+}
+
+.logoIcon {
+  font-size: 28px;
+  color: var(--text-primary);
+}
+
+.logoText h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.logoText p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.navLinks {
+  flex: 1;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.navItem:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.active {
+  background-color: var(--blue-selection);
+  color: #1e3a8a; /* darker blue for text on active */
+}
+
+.active .navIcon {
+  color: #1e3a8a;
+}
+
+.navIcon {
+  font-size: 18px;
+}
+
+.bottomContainer {
+  padding: 24px;
+}
+
+.addBtn {
+  width: 100%;
+  background-color: #000000;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.addBtn:hover {
+  background-color: #333333;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+  }
+  .open {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 1025px) {
+  .logoText h2 {
+    font-size: 22px;
+  }
+  .logoText p {
+    font-size: 14px;
+  }
+  .navItem {
+    font-size: 16px;
+  }
+  .addBtn {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,23 @@
+.chartContainer {
+  background-color: var(--card-bg);
+  border-radius: var(--base-radius);
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 400px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.canvasContainer {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}

@@ -1,0 +1,83 @@
+.navbar {
+  height: 72px; /* standard height */
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.menuBtn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-primary);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.username {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+
+.logoutBtn:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.logoutIcon {
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  .menuBtn {
+    display: block;
+  }
+}
+
+@media (max-width: 425px) {
+  .navbar {
+    padding: 0 16px;
+  }
+  .logoutBtn span {
+    display: none;
+  }
+  .logoutBtn {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .username {
+    font-size: 16px;
+  }
+  .logoutBtn {
+    font-size: 16px;
+  }
+}
