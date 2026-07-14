@@ -1,0 +1,261 @@
+/**
+ * Dashboard.css
+ * Styles the hello greeting block, statistics capsule indicators, 
+ * and responsive grids (Desktop: 4 columns, Tablet: 2 columns, Mobile: 1 column).
+ */
+
+/* Welcome Banner Headline */
+.welcome-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.welcome-greeting h1 {
+  font-size: 2.6rem;   /* ~40px */
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.welcome-greeting p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Time Date Capsule */
+.header-capsule {
+  padding: 16px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background: var(--card-bg);
+}
+
+.capsule-day {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.capsule-date {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Statistics Summary capsules */
+.summary-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.metric-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: var(--card-bg);
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.metric-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.55rem;
+  color: var(--metric-color);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.metric-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 2px 0;
+}
+
+.metric-detail {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Goals mini bar */
+.metric-progress-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.metric-progress-bar {
+  height: 100%;
+  background: var(--success);
+  transition: width 0.4s ease;
+}
+
+/* Feature preview Cards grid list */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.feature-card {
+  position: relative;
+  padding: 34px;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: left;
+  border-radius: var(--radius-lg);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-card .card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+  opacity: 0.4;
+}
+
+.feature-card:hover .card-glow {
+  opacity: 1;
+}
+
+.card-header-icon {
+  font-size: 2.5rem;
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.feature-card:hover .card-header-icon {
+  transform: scale(1.15) translateY(-5px);
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-main);
+  position: relative;
+  z-index: 1;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-footer-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 50px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-muted);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Specific Card Layout configurations */
+.feature-card[data-target="datetime"] {
+  grid-column: span 2;
+}
+
+/* Animations for cards entrance */
+.feature-grid .feature-card:nth-child(1) { animation-delay: 0.05s; }
+.feature-grid .feature-card:nth-child(2) { animation-delay: 0.1s; }
+.feature-grid .feature-card:nth-child(3) { animation-delay: 0.15s; }
+.feature-grid .feature-card:nth-child(4) { animation-delay: 0.2s; }
+.feature-grid .feature-card:nth-child(5) { animation-delay: 0.25s; }
+.feature-grid .feature-card:nth-child(6) { animation-delay: 0.3s; }
+.feature-grid .feature-card:nth-child(7) { animation-delay: 0.35s; }
+
+/* Grid Responsive Rules */
+@media (max-width: 1200px) {
+  .summary-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .feature-card[data-target="datetime"] {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .header-capsule {
+    align-items: flex-start;
+    padding: 8px 16px;
+  }
+  .summary-metrics-grid {
+    gap: 14px;
+  }
+  .feature-grid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 580px) {
+  .summary-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .welcome-greeting h1 {
+    font-size: 1.8rem;
+  }
+}

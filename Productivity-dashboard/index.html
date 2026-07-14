@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AeroFlow - Premium Productivity Suite</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Feature CSS files -->
+  <link rel="stylesheet" href="CSS/dashboard.css">
+  <link rel="stylesheet" href="CSS/todo.css">
+  <link rel="stylesheet" href="CSS/planner.css">
+  <link rel="stylesheet" href="CSS/timer.css">
+  <link rel="stylesheet" href="CSS/weather.css">
+  <link rel="stylesheet" href="CSS/darkmode.css">
+</head>
+<body>
+  <!-- Ambient background overlay -->
+  <div class="app-bg-overlay" id="bg-overlay"></div>
+  <canvas class="stars-overlay" id="stars-canvas"></canvas>
+
+  <!-- Toast Notification anchor -->
+  <div id="toast-container"></div>
+
+  <!-- Global Header -->
+  <header class="app-header glass-panel">
+    <a href="#" class="header-logo" id="logo-link">
+      <i class="fa-solid fa-wind animate-logo"></i>
+      <span>AeroFlow</span>
+    </a>
+    <div class="header-nav">
+      <div class="header-time-widget" id="header-clock">--:--:--</div>
+      <div class="header-weather-summary" id="header-weather" style="cursor: pointer;">
+        <i class="fa-solid fa-cloud-sun"></i>
+        <span>Loading...</span>
+      </div>
+      <button class="btn-back-dashboard" id="btn-global-back">
+        <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+      </button>
+      <button class="btn-theme-toggle" id="theme-toggle" title="Toggle Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="app-content">
+
+    <!-- DASHBOARD HOME VIEW -->
+    <section class="app-section active" id="sec-dashboard">
+      <!-- Greeting and Welcome -->
+      <div class="welcome-header animate-fade-in">
+        <div class="welcome-greeting">
+          <h1 id="dashboard-greeting">Good Morning</h1>
+          <p id="dashboard-subtitle">Make today your most productive masterpiece.</p>
+        </div>
+        <!-- Time/Date Capsule -->
+        <div class="header-capsule glass-panel">
+          <div class="capsule-day" id="capsule-day">Tuesday</div>
+          <div class="capsule-date" id="capsule-date">July 14, 2026</div>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Summary Grid -->
+      <div class="summary-metrics-grid animate-slide-up">
+        <!-- Task Summary -->
+        <div class="metric-card glass-panel" style="--metric-color: var(--primary);">
+          <div class="metric-icon"><i class="fa-solid fa-list-check"></i></div>
+          <div class="metric-info">
+            <span class="metric-title">Tasks Status</span>
+            <span class="metric-value" id="metric-tasks-count">0 / 0</span>
+            <span class="metric-detail" id="metric-tasks-label">0 pending tasks</span>
+          </div>
+        </div>
+        <!-- Goals Progress -->
+        <div class="metric-card glass-panel" style="--metric-color: var(--success);">
+          <div class="metric-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <div class="metric-info">
+            <span class="metric-title">Daily Goals</span>
+            <span class="metric-value" id="metric-goals-percent">0%</span>
+            <span class="metric-detail" id="metric-goals-label">0 goals completed</span>
+          </div>
+          <!-- Tiny bottom progress bar -->
+          <div class="metric-progress-container">
+            <div class="metric-progress-bar" id="metric-goals-bar" style="width: 0%;"></div>
+          </div>
+        </div>
+        <!-- Focus Duration -->
+        <div class="metric-card glass-panel" style="--metric-color: var(--secondary);">
+          <div class="metric-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div class="metric-info">
+            <span class="metric-title">Focus Time</span>
+            <span class="metric-value" id="metric-pomodoro-count">0</span>
+            <span class="metric-detail" id="metric-pomodoro-label">sessions completed</span>
+          </div>
+        </div>
+        <!-- Weather Glance -->
+        <div class="metric-card glass-panel" style="--metric-color: var(--warning);" id="metric-weather-card">
+          <div class="metric-icon" id="metric-weather-icon"><i class="fa-solid fa-temperature-empty"></i></div>
+          <div class="metric-info">
+            <span class="metric-title" id="metric-weather-city">Location info</span>
+            <span class="metric-value" id="metric-weather-temp">--°C</span>
+            <span class="metric-detail" id="metric-weather-condition">Checking environment...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Feature Navigation Grid -->
+      <div class="feature-grid animate-slide-up">
+        <!-- Navigation Card: Todo -->
+        <div class="feature-card glass-panel" data-target="todo">
+          <div class="card-glow" style="background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.15) 0%, transparent 80%);"></div>
+          <div class="card-header-icon" style="color: var(--primary);"><i class="fa-solid fa-check-double"></i></div>
+          <h3>Todo Manager</h3>
+          <p>Organize, prioritize, and check off daily actions.</p>
+          <div class="card-footer-badge" id="badge-todo-summary">0 pending</div>
+        </div>
+
+        <!-- Navigation Card: Daily Planner -->
+        <div class="feature-card glass-panel" data-target="planner">
+          <div class="card-glow" style="background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 80%);"></div>
+          <div class="card-header-icon" style="color: var(--secondary);"><i class="fa-regular fa-calendar-days"></i></div>
+          <h3>Hourly Schedule</h3>
+          <p>Plan hourly events from 8 AM to 8 PM with auto-save.</p>
+          <div class="card-footer-badge" id="badge-planner-summary">Empty slots</div>
+        </div>
+
+        <!-- Navigation Card: Daily Goals -->
+        <div class="feature-card glass-panel" data-target="goals">
+          <div class="card-glow" style="background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 80%);"></div>
+          <div class="card-header-icon" style="color: var(--success);"><i class="fa-solid fa-circle-check"></i></div>
+          <h3>Success Targets</h3>
+          <p>Track short-term goals with an animated progress system.</p>
+          <div class="card-footer-badge" id="badge-goals-summary">0% complete</div>
+        </div>
+
+        <!-- Navigation Card: Pomodoro -->
+        <div class="feature-card glass-panel" data-target="timer">
+          <div class="card-glow" style="background: radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.15) 0%, transparent 80%);"></div>
+          <div class="card-header-icon" style="color: var(--danger);"><i class="fa-solid fa-stopwatch-20"></i></div>
+          <h3>Pomodoro Clock</h3>
+          <p>Boost focus using intervals and break sessions.</p>
+          <div class="card-footer-badge" id="badge-timer-summary">25:00 idle</div>
+        </div>
+
+        <!-- Navigation Card: Quotes -->
+        <div class="feature-card glass-panel" data-target="quotes">
+          <div class="card-glow" style="background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 80%);"></div>
+          <div class="card-header-icon" style="color: #8B5CF6;"><i class="fa-solid fa-quote-left"></i></div>
+          <h3>Daily Quotes</h3>
+          <p>Find motivation with randomly pulled motivational phrases.</p>
+          <div class="card-footer-badge" id="badge-quotes-summary">Tap to read</div>
+        </div>
+
+        <!-- Navigation Card: Weather -->
+        <div class="feature-card glass-panel" data-target="weather">
+          <div class="card-glow" style="background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.15) 0%, transparent 80%);"></div>
+          <div class="card-header-icon" style="color: var(--warning);"><i class="fa-solid fa-snowflake"></i></div>
+          <h3>Environment</h3>
+          <p>View forecast details, humidity, and sunrise schedules.</p>
+          <div class="card-footer-badge" id="badge-weather-summary">--°C</div>
+        </div>
+
+        <!-- Navigation Card: Date Time -->
+        <div class="feature-card glass-panel" data-target="datetime">
+          <div class="card-glow" style="background: radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 80%);"></div>
+          <div class="card-header-icon" style="color: #EC4899;"><i class="fa-solid fa-clock"></i></div>
+          <h3>Calendar & Clock</h3>
+          <p>Live date calculations and analog/digital time tracking.</p>
+          <div class="card-footer-badge" id="badge-datetime-summary">Live</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- TODO LIST SECTION (FULL SCREEN) -->
+    <section class="app-section" id="sec-todo">
+      <div class="section-container glass-panel">
+        <div class="section-title-bar">
+          <h2><i class="fa-solid fa-check-double icon-left" style="color: var(--primary);"></i> Todo Tasks Manager</h2>
+        </div>
+
+        <!-- Filters, Search and Sorting -->
+        <div class="todo-control-bar">
+          <div class="todo-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="todo-search-input" placeholder="Search tasks...">
+          </div>
+
+          <div class="todo-filters">
+            <button class="todo-filter-btn active" data-filter="all">All</button>
+            <button class="todo-filter-btn" data-filter="pending">Pending</button>
+            <button class="todo-filter-btn" data-filter="completed">Completed</button>
+            <button class="todo-filter-btn" data-filter="important">Important</button>
+          </div>
+
+          <div class="todo-sort">
+            <label for="todo-sort-select">Sort:</label>
+            <select id="todo-sort-select">
+              <option value="dateAdded">Date Added</option>
+              <option value="dueDate">Due Date</option>
+              <option value="priority">Priority</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Task Input Box -->
+        <form class="todo-input-form" id="todo-form">
+          <div class="todo-input-row">
+            <input type="text" id="todo-input" class="todo-text-input" placeholder="What needs to be done? Alt+T shortcut..." required>
+            
+            <div class="todo-metadata-inputs">
+              <div class="todo-meta-field">
+                <i class="fa-solid fa-flag"></i>
+                <select id="todo-priority" class="todo-priority-select">
+                  <option value="low">Low Priority</option>
+                  <option value="medium" selected>Medium Priority</option>
+                  <option value="high">High Priority</option>
+                </select>
+              </div>
+
+              <div class="todo-meta-field">
+                <i class="fa-solid fa-calendar-day"></i>
+                <input type="date" id="todo-duedate" class="todo-date-input">
+              </div>
+            </div>
+
+            <button type="submit" class="todo-add-btn">
+              <i class="fa-solid fa-plus"></i> Add
+            </button>
+          </div>
+        </form>
+
+        <!-- Tasks Container -->
+        <div class="task-list-wrapper">
+          <ul class="task-list" id="task-list-ul">
+            <!-- Items added dynamically -->
+          </ul>
+
+          <!-- Empty State Illustration -->
+          <div class="empty-state" id="todo-empty-state">
+            <div class="empty-logo"><i class="fa-regular fa-clipboard"></i></div>
+            <h4>You're all caught up!</h4>
+            <p>No tasks found matching your filter criteria. Go ahead and add some.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- DAILY PLANNER SECTION (FULL SCREEN) -->
+    <section class="app-section" id="sec-planner">
+      <div class="section-container glass-panel">
+        <div class="section-title-bar">
+          <h2><i class="fa-regular fa-calendar-days icon-left" style="color: var(--secondary);"></i> Hourly Daily Planner</h2>
+          <span class="planner-status" id="planner-saved-status"><i class="fa-solid fa-cloud-arrow-up"></i> Auto-saved</span>
+        </div>
+
+        <div class="planner-subtitle">
+          <p>Schedule your activities hour-by-hour below. Your notes are stored automatically as you type.</p>
+        </div>
+
+        <div class="planner-grid" id="planner-hours-container">
+          <!-- Hour blocks generated dynamically. Range: 8 AM - 8 PM -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- DAILY GOALS SECTION (FULL SCREEN) -->
+    <section class="app-section" id="sec-goals">
+      <div class="section-container glass-panel">
+        <div class="section-title-bar">
+          <h2><i class="fa-solid fa-circle-check icon-left" style="color: var(--success);"></i> Success Targets & Goals</h2>
+        </div>
+
+        <div class="goals-content-layout">
+          <!-- Left side progress parameters -->
+          <div class="goals-progress-panel glass-panel">
+            <h3>Progress Summary</h3>
+            <div class="goals-chart-box">
+              <svg class="circular-chart" viewBox="0 0 36 36">
+                <!-- SVG circular path -->
+                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="circle" id="goals-svg-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              </svg>
+              <div class="percentage-label" id="goals-text-percent">0%</div>
+            </div>
+            
+            <div class="goals-status-readout">
+              <p id="goals-count-text">0 of 0 Goals Completed</p>
+            </div>
+          </div>
+
+          <!-- Right side Goals CRUD -->
+          <div class="goals-items-panel">
+            <form class="goal-input-form" id="goal-form">
+              <input type="text" id="goal-input" placeholder="Type a goal and press Enter..." required>
+              <button type="submit" class="goal-add-btn"><i class="fa-solid fa-plus"></i></button>
+            </form>
+
+            <ul class="goals-list" id="goals-list-ul">
+              <!-- Dynamically populated goals items -->
+            </ul>
+
+            <!-- Empty goals state -->
+            <div class="empty-state" id="goals-empty-state">
+              <div class="empty-logo"><i class="fa-solid fa-bullseye"></i></div>
+              <h4>No goals registered today</h4>
+              <p>Break your day into smaller success milestones by adding your first goal above.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- POMODORO TIMER SECTION (FULL SCREEN) -->
+    <section class="app-section" id="sec-timer">
+      <div class="section-container glass-panel">
+        <div class="section-title-bar">
+          <h2><i class="fa-solid fa-stopwatch-20 icon-left" style="color: var(--danger);"></i> Focus Pomodoro Timer</h2>
+        </div>
+
+        <div class="timer-card-wrapper">
+          <!-- Session Switchers -->
+          <div class="timer-mode-buttons">
+            <button class="timer-mode-btn active" data-mode="work">Work Session</button>
+            <button class="timer-mode-btn" data-mode="short">Short Break</button>
+            <button class="timer-mode-btn" data-mode="long">Long Break</button>
+          </div>
+
+          <!-- Visual Countdown circle -->
+          <div class="timer-visual-clock">
+            <svg class="timer-svg" viewBox="0 0 100 100">
+              <circle class="timer-svg-bg" cx="50" cy="50" r="45"></circle>
+              <circle class="timer-svg-fill" id="timer-progress-ring" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="0"></circle>
+            </svg>
+            <div class="timer-text-display">
+              <span id="timer-display-digits">25:00</span>
+              <span id="timer-display-state" class="state-label">WORK</span>
+            </div>
+          </div>
+
+          <!-- Control bar buttons -->
+          <div class="timer-controls">
+            <button id="btn-timer-start" class="timer-control-btn btn-timer-play" title="Start Session">
+              <i class="fa-solid fa-play"></i> Start
+            </button>
+            <button id="btn-timer-pause" class="timer-control-btn btn-timer-pause" disabled title="Pause Session">
+              <i class="fa-solid fa-pause"></i> Pause
+            </button>
+            <button id="btn-timer-reset" class="timer-control-btn btn-timer-reset" title="Reset Session">
+              <i class="fa-solid fa-rotate-right"></i> Reset
+            </button>
+          </div>
+
+          <!-- Statistics & sounds toggle -->
+          <div class="timer-indicators">
+            <div class="indicator-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Focus Sessions Done: <strong id="timer-sessions-badge">0</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- MOTIVATION QUOTES SECTION (FULL SCREEN) -->
+    <section class="app-section" id="sec-quotes">
+      <div class="section-container glass-panel">
+        <div class="section-title-bar">
+          <h2><i class="fa-solid fa-quote-left icon-left" style="color: #8B5CF6;"></i> Inspirational Wisdom</h2>
+        </div>
+
+        <div class="quotes-display-box">
+          <div class="quotes-card" id="quotes-container-card">
+            <!-- Loading Skeleton -->
+            <div class="quote-skeleton-wrapper" id="quote-skeleton">
+              <div class="skeleton" style="height: 24px; margin-bottom: 12px; width: 85%;"></div>
+              <div class="skeleton" style="height: 24px; margin-bottom: 24px; width: 60%;"></div>
+              <div class="skeleton" style="height: 16px; width: 30%; float: right;"></div>
+            </div>
+
+            <!-- Authentic Content -->
+            <div class="quote-real-content" id="quote-main-content" style="display: none;">
+              <blockquote id="quote-text">Loading inspiration...</blockquote>
+              <cite id="quote-author">Unknown</cite>
+            </div>
+          </div>
+
+          <button id="btn-refresh-quote" class="quote-reload-btn">
+            <i class="fa-solid fa-arrow-rotate-right"></i> Fetch Another Quote
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- WEATHER WIDGET SECTION (FULL SCREEN) -->
+    <section class="app-section" id="sec-weather">
+      <div class="section-container glass-panel">
+        <div class="section-title-bar">
+          <h2><i class="fa-solid fa-cloud-sun icon-left" style="color: var(--warning);"></i> Live Weather</h2>
+        </div>
+
+        <!-- City manual search bar — always visible for user control -->
+        <div class="weather-search-bar">
+          <form id="weather-city-form">
+            <input type="text" id="weather-city-input" placeholder="Search a city (e.g. Bilaspur, Mumbai, New York)..." required>
+            <button type="submit" class="weather-search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i> Search
+            </button>
+          </form>
+          <button id="btn-weather-gps" class="weather-gps-btn" title="Detect my current location">
+            <i class="fa-solid fa-location-crosshairs"></i> My Location
+          </button>
+        </div>
+
+        <!-- Weather states container -->
+        <div class="weather-details-card glass-panel" id="weather-detail-main">
+
+          <!-- STATE 1: Detecting GPS location -->
+          <div class="weather-state-panel" id="weather-state-locating" style="display: flex;">
+            <div class="weather-state-spinner">
+              <i class="fa-solid fa-location-crosshairs fa-spin"></i>
+            </div>
+            <p class="weather-state-title">Detecting your current location...</p>
+            <p class="weather-state-sub">Please allow location access when prompted by your browser.</p>
+          </div>
+
+          <!-- STATE 2: Fetching weather data -->
+          <div class="weather-state-panel" id="weather-state-loading" style="display: none;">
+            <div class="weather-state-spinner">
+              <i class="fa-solid fa-cloud-sun fa-spin"></i>
+            </div>
+            <p class="weather-state-title">Loading weather...</p>
+            <p class="weather-state-sub">Fetching the latest conditions for your location.</p>
+          </div>
+
+          <!-- STATE 3: Error — permission denied or network failure -->
+          <div class="weather-state-panel weather-state-error-panel" id="weather-state-error" style="display: none;">
+            <div class="weather-state-spinner error-icon">
+              <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+            <p class="weather-state-title" id="weather-error-message">Unable to detect your location.</p>
+            <p class="weather-state-sub">Enable location in your browser or search for a city above.</p>
+            <button id="btn-weather-retry" class="weather-retry-btn">
+              <i class="fa-solid fa-rotate-right"></i> Retry Location
+            </button>
+          </div>
+
+          <!-- STATE 4: Live weather data — order: city → icon → temp → feels → condition → stats -->
+          <div class="weather-real-grid" id="weather-real-data" style="display: none;">
+
+            <div class="weather-main-panel">
+              <div class="weather-city-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <h3 id="weather-show-city">--</h3>
+              </div>
+              <div class="weather-icon-box" id="weather-show-icon">
+                <i class="fa-solid fa-sun"></i>
+              </div>
+              <div class="temp-value" id="weather-show-temp">--°C</div>
+              <div class="feels-like" id="weather-show-feels">Feels like --°C</div>
+              <div class="weather-cond" id="weather-show-condition">--</div>
+            </div>
+
+            <div class="weather-stats-panel">
+              <div class="sub-stat-card glass-panel">
+                <i class="fa-solid fa-droplet"></i>
+                <div class="stat-info">
+                  <span class="stat-name">Humidity</span>
+                  <span class="stat-number" id="weather-show-humidity">--%</span>
+                </div>
+              </div>
+              <div class="sub-stat-card glass-panel">
+                <i class="fa-solid fa-wind"></i>
+                <div class="stat-info">
+                  <span class="stat-name">Wind Speed</span>
+                  <span class="stat-number" id="weather-show-wind">-- km/h</span>
+                </div>
+              </div>
+              <div class="sub-stat-card glass-panel">
+                <i class="fa-solid fa-sun"></i>
+                <div class="stat-info">
+                  <span class="stat-name">Sunrise</span>
+                  <span class="stat-number" id="weather-show-sunrise">--</span>
+                </div>
+              </div>
+              <div class="sub-stat-card glass-panel">
+                <i class="fa-solid fa-moon"></i>
+                <div class="stat-info">
+                  <span class="stat-name">Sunset</span>
+                  <span class="stat-number" id="weather-show-sunset">--</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- DATE & TIME SECTION (FULL SCREEN) -->
+    <section class="app-section" id="sec-datetime">
+      <div class="section-container glass-panel">
+        <div class="section-title-bar">
+          <h2><i class="fa-solid fa-clock icon-left" style="color: #EC4899;"></i> Time & Calendar</h2>
+        </div>
+
+        <div class="datetime-layout">
+          <!-- Calendar Card -->
+          <div class="calendar-display glass-panel">
+            <div class="calendar-header-month" id="calendar-header-month">July 2026</div>
+            <div class="calendar-days-grid-header">
+              <div>Su</div>
+              <div>Mo</div>
+              <div>Tu</div>
+              <div>We</div>
+              <div>Th</div>
+              <div>Fr</div>
+              <div>Sa</div>
+            </div>
+            <div class="calendar-days-grid" id="calendar-numbers-grid">
+              <!-- Calendar dates generated dynamically -->
+            </div>
+          </div>
+
+          <!-- Digital Time readout card -->
+          <div class="digital-clock-display glass-panel">
+            <div class="clock-headline" id="datetime-full-clock">21:35:40</div>
+            <div class="clock-sec-capsule">
+              <span class="clock-date-capsule" id="datetime-full-date">Tuesday, July 14, 2026</span>
+              <span class="timezone-badge">Local Time (GMT+5:30)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FAB for launching task adding quickly -->
+  <button class="fab" id="global-fab-task" title="Enter New task (Alt + T)">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+
+  <!-- Entry javascript loaders -->
+  <script src="JS/storage.js"></script>
+  <script src="JS/theme.js"></script>
+  <script src="JS/datetime.js"></script>
+  <script src="JS/background.js"></script>
+  <script src="JS/navigation.js"></script>
+  <script src="JS/todo.js"></script>
+  <script src="JS/planner.js"></script>
+  <script src="JS/goals.js"></script>
+  <script src="JS/pomodoro.js"></script>
+  <script src="JS/weather.js"></script>
+  <script src="JS/quotes.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

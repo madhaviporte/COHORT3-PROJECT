@@ -1,0 +1,316 @@
+/**
+ * Weather.css
+ * Premium weather widget with state panels: locating, loading, error+retry, data.
+ * Larger card, clear info hierarchy, glassmorphism sub-cards.
+ */
+
+/* ── Search Bar ─────────────────────────────────────── */
+.weather-search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  max-width: 700px;
+  margin: 0 auto 32px auto;
+  flex-wrap: wrap;
+}
+
+.weather-search-bar form {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  min-width: 260px;
+}
+
+#weather-city-input {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.3s;
+}
+
+#weather-city-input:focus {
+  border-color: var(--warning);
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
+}
+
+.weather-search-btn {
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  background: var(--warning);
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+  white-space: nowrap;
+}
+
+.weather-search-btn:hover {
+  background: var(--warning-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.weather-gps-btn {
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.weather-gps-btn:hover {
+  border-color: var(--warning);
+  color: var(--warning);
+  background: rgba(245, 158, 11, 0.06);
+}
+
+/* ── Outer Card ─────────────────────────────────────── */
+.weather-details-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ── State Panels (locating / loading / error) ──────── */
+.weather-state-panel {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  gap: 16px;
+}
+
+.weather-state-spinner {
+  font-size: 3.5rem;
+  color: var(--warning);
+  margin-bottom: 8px;
+  animation: weather-pulse 2s ease-in-out infinite;
+}
+
+.weather-state-panel.weather-state-error-panel .weather-state-spinner.error-icon {
+  color: var(--danger);
+  animation: none;
+}
+
+@keyframes weather-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.05); }
+}
+
+.weather-state-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.weather-state-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 360px;
+  line-height: 1.5;
+}
+
+.weather-retry-btn {
+  margin-top: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.weather-retry-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* ── Data Grid (state 4) ─────────────────────────────── */
+.weather-real-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Left — main display */
+.weather-main-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* 📍 City row */
+.weather-city-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.weather-city-row i {
+  font-size: 1.4rem;
+  color: var(--warning);
+}
+
+.weather-city-row h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+}
+
+/* 🌤 Icon */
+.weather-icon-box {
+  font-size: 5rem;
+  color: var(--warning);
+  line-height: 1;
+  margin: 12px 0 6px 0;
+  animation: floatCloud 3s ease-in-out infinite;
+}
+
+@keyframes floatCloud {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* Temperature */
+.weather-main-panel .temp-value {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+/* Feels Like */
+.weather-main-panel .feels-like {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Condition */
+.weather-main-panel .weather-cond {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-transform: capitalize;
+}
+
+/* Right — stats 2x2 grid */
+.weather-stats-panel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.sub-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 18px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sub-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.sub-stat-card > i {
+  font-size: 1.6rem;
+  color: var(--warning);
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stat-number {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .weather-real-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .weather-main-panel {
+    align-items: center;
+    text-align: center;
+  }
+  .weather-city-row {
+    justify-content: center;
+  }
+  .weather-details-card {
+    padding: 28px 20px;
+  }
+  .weather-icon-box {
+    font-size: 4rem;
+  }
+  .weather-main-panel .temp-value {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .weather-stats-panel {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .sub-stat-card {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+}

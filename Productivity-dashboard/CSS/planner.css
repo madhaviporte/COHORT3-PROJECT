@@ -1,0 +1,158 @@
+/**
+ * Planner.css
+ * Styles daily planning sheets, hour slots, highlights active hours, 
+ * shades past hours, and formats auto-save placeholders.
+ */
+
+.planner-status {
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.planner-status i {
+  font-size: 0.95rem;
+}
+
+.planner-subtitle {
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.planner-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Slot Containers */
+.planner-slot-card {
+  display: flex;
+  align-items: stretch;
+  padding: 18px 24px;
+  gap: 24px;
+  background: var(--card-bg);
+  min-height: 90px;
+  border-left-width: 4px;
+  border-left-color: var(--text-muted);
+}
+
+.planner-slot-card.focused {
+  border-left-color: var(--primary) !important;
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(79, 70, 229, 0.25);
+}
+
+/* Time Indicator */
+.planner-slot-time {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.time-label {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+/* Live Hour Pulse Pill */
+.planner-live-tag {
+  background: rgba(6, 182, 212, 0.12);
+  color: var(--secondary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: max-content;
+  text-transform: uppercase;
+}
+
+/* Textarea textbox */
+.planner-slot-textbox {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.planner-textarea {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 500;
+  resize: none;
+  outline: none;
+  font-family: var(--font-main);
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.2s;
+}
+
+.planner-textarea:focus {
+  border-bottom-color: var(--border-color);
+}
+
+.planner-textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.5;
+  font-style: italic;
+}
+
+/* Past Hour shading styling */
+.planner-slot-card.past-hour {
+  opacity: 0.55;
+  background: rgba(0, 0, 0, 0.02);
+  border-left-color: var(--text-muted);
+}
+
+[data-theme="dark"] .planner-slot-card.past-hour {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.planner-slot-card.past-hour textarea {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Active Hour highlighting styling */
+.planner-slot-card.current-hour {
+  border-left-color: var(--secondary);
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.1);
+  border-radius: var(--radius-lg);
+  border-color: rgba(6, 182, 212, 0.25);
+  background: rgba(6, 182, 212, 0.03);
+}
+
+/* Future Hour */
+.planner-slot-card.future-hour {
+  border-left-color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .planner-slot-card {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+  .planner-slot-time {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
