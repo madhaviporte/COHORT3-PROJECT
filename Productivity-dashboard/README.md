@@ -1,149 +1,122 @@
-# AeroFlow - Premium Productivity Suite Dashboard
+# AeroFlow - Productivity Dashboard
 
-AeroFlow is a modern, responsive, and glassmorphic productivity dashboard designed to streamline your daily workflow in one gorgeous view. Inspired by Notion, Linear, Microsoft To Do, and TickTick, this application uses only core web technologies (pure vanilla HTML5, CSS3, and JavaScript) to guarantee blazing fast performance and compatibility.
+AeroFlow is a modern productivity dashboard built with pure **HTML, CSS, and JavaScript**. It helps manage daily tasks, schedules, goals, focus sessions, weather updates, and more in one simple interface.
 
-## 🚀 Folder Structure
+## ✨ Features
+
+* ✅ Modern glassmorphism dashboard UI
+* ✅ Todo task manager with priorities and filters
+* ✅ Daily planner schedule
+* ✅ Goal tracking with progress visualization
+* ✅ Pomodoro focus timer
+* ✅ Weather information using location
+* ✅ Daily motivational quotes
+* ✅ Live clock and date
+* ✅ Light/Dark mode support
+* ✅ LocalStorage data saving
+* ✅ Responsive design for desktop, tablet, and mobile
+
+## 📁 Project Structure
 
 ```
-Productivity-Dashboard/
-│── index.html
-│── style.css
-│── script.js
-│── assets/
-│   ├── icons/
+AeroFlow/
+│
+├── index.html
+├── style.css
+├── script.js
+│
+├── assets/
 │   ├── images/
-│   └── backgrounds/
+│   └── icons/
 │
 ├── css/
 │   ├── dashboard.css
 │   ├── todo.css
 │   ├── planner.css
 │   ├── timer.css
-│   ├── weather.css
 │   └── darkmode.css
 │
 ├── js/
-│   ├── navigation.js
 │   ├── todo.js
 │   ├── planner.js
 │   ├── goals.js
 │   ├── pomodoro.js
 │   ├── weather.js
-│   ├── quotes.js
-│   ├── datetime.js
 │   ├── theme.js
-│   ├── background.js
 │   └── storage.js
 │
 └── README.md
 ```
 
-## ✨ Key Features
+## 🚀 How to Run
 
-1. **Dashboard Home View**:
-   - Welcome greetings calculated from local hours (Good Morning/Afternoon/Evening).
-   - Live summary metrics grid (completion rates on tasks, circular goals tracker, focus session counts).
-   - Interactive 7-card responsive preview grid (Desktop: 4 columns, Tablet: 2 columns, Mobile: 1 column).
-2. **Todo Manager**:
-   - Task Priorities (Low, Medium, High) with left-color borders.
-   - Calendared Due Dates with expired status tags (Overdue warning indicators).
-   - Live query text search matching and status filters (All, Pending, Completed, Important).
-   - Multi-option sorting (by Date Added, Due Date, Priority).
-   - Global Floating Action Button (FAB) + key triggers.
-3. **Hourly Daily Planner**:
-   - Scheduling grid blocks spanning from 8 AM to 8 PM.
-   - Context highlights: shading past slots, and highlighting active hours with a pulsing live status banner.
-   - Micro-saving on keystroke inputs with debounced triggers.
-4. **Daily Goals Tracker**:
-   - Circular SVG percentage wheel.
-   - Goal completion metrics counters.
-   - Dynamic canvas confetti particle explosion celebrating 100% finish.
-5. **Focus Pomodoro Timer**:
-   - Triple interval phases: Work Session (25 min), Short Break (5 min), and Long Break (15 min).
-   - Circular SVG countdown ring and audio finished ring synthesized locally via the **Web Audio API** (browser client-side sound - no external downloads needed).
-   - Desktop system notifications (requires prompt approval).
-6. **Geolocated Weather**:
-   - Real-time weather parameters querying Open-Meteo forecasts.
-   - Automatically parses GPS coordinates to city names via nominatim reverse lookup.
-   - Manual search bar overrides with autocomplete resolves (powered by Open-Meteo Geocoding).
-   - Fallback defaults to "New Delhi" on geolocation rejection.
-7. **Quotes Board**:
-   - Random quotes retrieved from public REST APIs.
-   - Offline fallback collections inside script buffers.
-8. **Live Clock**:
-   - Dynamic 1-second header clock, tz information, and calendar rendering.
-9. **Display Adaptations**:
-   - Light/Dark theme switchers which apply immediately on load (omitting browser flash).
-   - Ambient gradient overlays that alter depending on time of day (Morning sky, bright afternoon sunshine, sunset crimson, starry night sky).
-10. **Toast Notifications**:
-    - Animated slide-in cards updating actions (Adding items, completed details, saving planner, quotes loaded).
+### Option 1: Using Live Server
 
----
+1. Open the project in VS Code.
+2. Install the **Live Server** extension.
+3. Right click on `index.html`.
+4. Select **Open with Live Server**.
+5. Open:
 
-## 🎨 Theme Presets & Styling variables
+```
+http://localhost:5500/index.html
+```
 
-| Color | Hex | Role |
-| --- | --- | --- |
-| **Primary** | `#4F46E5` | Active accents, Todo anchors, Navigation links (Indigo) |
-| **Secondary** | `#06B6D4` | Live tags, Planner schedule headers, focus items (Teal) |
-| **Success** | `#10B981` | Completed marks, 100% progress badges (Emerald) |
-| **Warning** | `#F59E0B` | Weather conditions, Medium priority marks (Amber) |
-| **Danger** | `#EF4444` | High priority triggers, Timer Work periods (Rose) |
+### Option 2: Using Python Server
 
----
+Run:
 
-## 💡 Keyboard Shortcuts
+```bash
+python -m http.server 3000
+```
 
-AeroFlow supports advanced shortcuts to optimize workflow. Pressing `Alt + Option` combined with:
-- **`Alt + T`**: Open Todo List view and focus input text-area.
-- **`Alt + P`**: Open Daily Planner view.
-- **`Alt + G`**: Open Goals Tracker view and focus input.
-- **`Alt + C`**: Open Pomodoro Timer.
-- **`Alt + W`**: Open Weather details page.
-- **`Escape`**: Return to main Home Dashboard grid.
+Then open:
 
----
+```
+http://localhost:3000
+```
 
-## 🛠️ APIs & Browser Integrations
+## 🌐 APIs Used
 
-- **Open-Meteo Forecast API**: Queries real-time temperatures, wind speeds, humidity, sunrise, and sunset without api keys.
-- **Open-Meteo Geocoding API**: Resolves manually queried city names to coordinates.
-- **Nominatim osm reverse-geocoder**: Decodes GPS coordinate values into local city names.
-- **HTML5 Web Audio API**: Graph-synthesized sine sound bell alerts on timer finishes.
-- **HTML5 Web Notifications API**: Fires operating system push-cards.
-- **HTML5 Geolocation API**: Interrogation coordinates from user browser.
-- **LocalStorage API**: Saves todo lists, themes, schedules, goals, and focus sessions.
+* Open-Meteo Weather API
+* Open-Meteo Geocoding API
+* Nominatim Reverse Geocoding API
+
+No API key required.
+
+## 🛠️ Technologies
+
+* HTML5
+* CSS3
+* JavaScript (Vanilla JS)
+* SVG
+* Web Audio API
+* Browser Notifications API
+* LocalStorage API
+
+## ⌨️ Keyboard Shortcuts
+
+| Shortcut | Action        |
+| -------- | ------------- |
+| Alt + T  | Open Todo     |
+| Alt + P  | Open Planner  |
+| Alt + G  | Open Goals    |
+| Alt + C  | Open Pomodoro |
+| Alt + W  | Open Weather  |
+| Escape   | Return Home   |
+
+## 📌 Future Updates
+
+* Calendar integration
+* Task reminders
+* Weekly weather charts
+* User profile settings
+* Advanced productivity analytics
+
+## 👨‍💻 Author
+
+Created with ❤️ using modern web technologies.
 
 ---
 
-## 🚀 Setup & Launch Instructions
-
-1. Clone or download this project workspace:
-   ```bash
-   git clone https://github.com/yourusername/Productivity-Dashboard.git
-   cd Productivity-Dashboard
-   ```
-2. Double-click the file `index.html` to open it in any modern browser (Chrome, Edge, Safari, Firefox).
-3. **Alternative Local Server Launch**:
-   Launch a lightweight HTTP server in the directory to enable Geolocation reverse Nominatim calls (which some browsers restrict on raw `file:///` protocols). Make sure Python is installed:
-   ```bash
-   python -m http.server 3000
-   ```
-   Open `http://localhost:3000` inside your browser.
-
----
-
-## 🖼️ Screenshots Placeholder
-*A mockup of the dashboard main view showing the stats overlay, glass glassmorphism navigation grid, and dark mode toggles.*
-*Add screenshots inside your repository folder here.*
-
----
-
-## 🔮 Future Improvements
-
-- [ ] Task sub-checkbox checklist lists.
-- [ ] Task due time alerts and notifications.
-- [ ] Planner calendar sync and multi-day scheduler schedules.
-- [ ] Weather weekly forecast chart displays.
-- [ ] Pomodoro session records and focus tracker logs.
-- [ ] Custom profile configuration settings.
+**AeroFlow - Organize your day. Focus better. Achieve more.**
