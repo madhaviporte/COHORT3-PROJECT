@@ -1,4 +1,6 @@
 {
+  "buildCommand": "npm run build:app",
+  "outputDirectory": "dist-app",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
