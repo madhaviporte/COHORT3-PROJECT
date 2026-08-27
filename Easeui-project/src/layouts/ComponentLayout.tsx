@@ -6,7 +6,6 @@ type Props = {};
 
 const ComponentLayout = ({}: Props) => {
   const location = useLocation();
-  console.log(location);
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 

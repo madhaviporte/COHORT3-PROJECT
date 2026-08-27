@@ -3,7 +3,6 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/libs/utils";
 import { entranceAnimations } from "@/libs/animations/entranceAnimation";
-import gsap from "gsap";
 
 const tooltipVariants = cva(
   "absolute z-50 rounded-md px-3 py-2 text-sm font-medium shadow-md pointer-events-none transition-all duration-200 whitespace-nowrap",
@@ -30,7 +29,7 @@ const tooltipVariants = cva(
 );
 
 interface TooltipProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "content">,
     VariantProps<typeof tooltipVariants> {
   asChild?: boolean;
   content: React.ReactNode;

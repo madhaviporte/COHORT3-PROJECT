@@ -9,7 +9,6 @@ const Navbar = () => {
   const { mode } = useSelector(
     (state: { theme: { mode: string } }) => state.theme
   );
-  console.log("this is theme->", mode);
 
   return (
     <nav className="h-16 w-full flex items-center justify-between px-8">
