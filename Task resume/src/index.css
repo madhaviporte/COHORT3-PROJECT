@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --spacing: 0.25rem;
+  --spacing-px: 1px;
+  --spacing-0: 0px;
+  --spacing-0\.5: 0.125rem;
+  --spacing-1: 0.25rem;
+  --spacing-1\.5: 0.375rem;
+  --spacing-2: 0.5rem;
+  --spacing-2\.5: 0.625rem;
+  --spacing-3: 0.75rem;
+  --spacing-3\.5: 0.875rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-7: 1.75rem;
+  --spacing-8: 2rem;
+  --spacing-9: 2.25rem;
+  --spacing-10: 2.5rem;
+  --spacing-11: 2.75rem;
+  --spacing-12: 3rem;
+  --spacing-14: 3.5rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-28: 7rem;
+  --spacing-32: 8rem;
+  --spacing-36: 9rem;
+  --spacing-40: 10rem;
+  --spacing-44: 11rem;
+  --spacing-48: 12rem;
+  --spacing-52: 13rem;
+  --spacing-56: 14rem;
+  --spacing-60: 15rem;
+  --spacing-64: 16rem;
+  --spacing-72: 18rem;
+  --spacing-80: 20rem;
+  --spacing-96: 24rem;
+
+  --max-w-xs: 20rem;
+  --max-w-sm: 24rem;
+  --max-w-md: 28rem;
+  --max-w-lg: 32rem;
+  --max-w-xl: 36rem;
+  --max-w-2xl: 42rem;
+  --max-w-3xl: 48rem;
+  --max-w-4xl: 56rem;
+  --max-w-5xl: 64rem;
+  --max-w-6xl: 72rem;
+  --max-w-7xl: 80rem;
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: #050505; color: #fff;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; min-height: 100vh;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+/* =============================================
+   GUARANTEED CONTAINER - works with or without Tailwind
+   ============================================= */
+.section-container {
+  width: 100%;
+  max-width: 80rem; /* 1280px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem; /* 20px base */
+  padding-right: 1.25rem;
+}
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: 2rem; /* 32px */
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 2.5rem; /* 40px */
+    padding-right: 2.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .section-container {
+    padding-left: 3rem; /* 48px */
+    padding-right: 3rem;
+  }
+}
+
+/* Section vertical spacing */
+.section-spacing { padding-top: 6rem; padding-bottom: 6rem; }
+@media (min-width: 640px) { .section-spacing { padding-top: 7rem; padding-bottom: 7rem; } }
+@media (min-width: 1024px) { .section-spacing { padding-top: 8rem; padding-bottom: 8rem; } }
+
+/* =============================================
+   GSAP INITIAL HIDDEN STATES
+   ============================================= */
+[data-hero-badge], [data-hero-heading], [data-hero-role],
+[data-hero-intro], [data-hero-buttons], [data-hero-social],
+[data-navbar], [data-hero-visual] { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  [data-hero-badge], [data-hero-heading], [data-hero-role],
+  [data-hero-intro], [data-hero-buttons], [data-hero-social],
+  [data-navbar], [data-hero-visual] { opacity: 1 !important; }
+}
+
+/* =============================================
+   EXPERIENCE TIMELINE
+   ============================================= */
+.exp-row-desktop { display: none; }
+@media (min-width: 768px) {
+  .exp-row-desktop { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+}
+
+/* =============================================
+   LINE CLAMP
+   ============================================= */
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* =============================================
+   KEYFRAMES
+   ============================================= */
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
