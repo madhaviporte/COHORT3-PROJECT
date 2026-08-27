@@ -20,9 +20,9 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc -p tsconfig.lib.json",
-    "build:app": "vite build --config vite.config.app.ts",
-    "preview": "vite preview --outDir dist-app"
+    "build": "vite build",
+    "build:lib": "vite build --config vite.config.lib.ts && tsc -p tsconfig.lib.json",
+    "preview": "vite preview"
   },
   "peerDependencies": {
     "react": ">=18",
