@@ -96,7 +96,8 @@ button {
    would double-animate (and lag) GSAP's inline transform updates. */
 [data-navbar],
 [data-project-card],
-[data-gsap-hover] {
+[data-gsap-hover],
+[data-edu-card] {
   transition-property: background-color, border-color, color, box-shadow;
 }
 

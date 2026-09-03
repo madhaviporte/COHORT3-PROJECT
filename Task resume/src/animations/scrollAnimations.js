@@ -92,12 +92,6 @@ export function initScrollAnimations(context) {
     fadeUp(expCards, { y: 30, duration: 0.65, stagger: 0.15 });
   }
 
-  // Education — card stagger
-  const eduCards = selector("[data-edu-card]");
-  if (eduCards.length) {
-    fadeUp(eduCards, { y: 25, duration: 0.6, stagger: 0.1 });
-  }
-
   // Achievements — card stagger
   const achievCards = selector("[data-achiev-card]");
   if (achievCards.length) {

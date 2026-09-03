@@ -25,45 +25,60 @@ function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
+  // While the mobile menu is open the bar + overlay must be fully opaque so
+  // page content never shows through; otherwise keep the scroll-aware look.
+  const navBackground = isOpen
+    ? "bg-[#050505] border-b border-white/5"
+    : scrolled
+      ? "bg-[#050505]/80 backdrop-blur-md border-b border-white/5"
+      : "bg-transparent";
+
   return (
-    <nav
-      data-navbar
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#050505]/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
-      }`}
-    >
-      <div className="w-full max-w-[80rem] mx-auto px-5 sm:px-8 lg:px-10 xl:px-12">
-        <div className="flex items-center justify-between h-18 md:h-20">
-          <a href="#" className="text-xl md:text-2xl font-bold text-white hover:text-lime-400 transition-colors">
-            MADHAVI PORTE<span className="text-lime-400">.</span>
-          </a>
-
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className="text-sm text-gray-400 hover:text-lime-400 transition-colors duration-200">
-                {link.name}
-              </a>
-            ))}
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"
-              className="px-6 py-2.5 text-sm font-medium border border-lime-400/50 text-lime-400 rounded-lg hover:bg-lime-400/10 transition-all duration-200">
-              Resume
+    <>
+      <nav
+        data-navbar
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBackground}`}
+      >
+        <div className="w-full max-w-[80rem] mx-auto px-5 sm:px-8 lg:px-10 xl:px-12">
+          <div className="flex items-center justify-between h-18 md:h-20">
+            <a href="#" className="text-xl md:text-2xl font-bold text-white hover:text-lime-400 transition-colors">
+              MADHAVI PORTE<span className="text-lime-400">.</span>
             </a>
-          </div>
 
-          {/* Mobile Hamburger */}
-          <button className="lg:hidden relative w-10 h-10 flex items-center justify-center" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle navigation" aria-expanded={isOpen}>
-            <div className="flex flex-col gap-1.5 w-6">
-              <span className={`block h-0.5 bg-white transition-all duration-300 origin-center ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
-              <span className={`block h-0.5 bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
-              <span className={`block h-0.5 bg-white transition-all duration-300 origin-center ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <a key={link.name} href={link.href} className="text-sm text-gray-400 hover:text-lime-400 transition-colors duration-200">
+                  {link.name}
+                </a>
+              ))}
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"
+                className="px-6 py-2.5 text-sm font-medium border border-lime-400/50 text-lime-400 rounded-lg hover:bg-lime-400/10 transition-all duration-200">
+                Resume
+              </a>
             </div>
-          </button>
-        </div>
-      </div>
 
+            {/* Mobile Hamburger */}
+            <button className="lg:hidden relative w-10 h-10 flex items-center justify-center" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle navigation" aria-expanded={isOpen}>
+              <div className="flex flex-col gap-1.5 w-6">
+                <span className={`block h-0.5 bg-white transition-all duration-300 origin-center ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+                <span className={`block h-0.5 bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+                <span className={`block h-0.5 bg-white transition-all duration-300 origin-center ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+              </div>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile menu overlay — rendered as a SIBLING of the fixed nav, not a
+          child. GSAP leaves an inline transform on [data-navbar] after the
+          hero entrance, and a transformed ancestor becomes the containing
+          block for position:fixed descendants — which collapsed this overlay
+          to zero height (top-18 + bottom-0 both resolving against the 72px
+          nav box). As a sibling it anchors to the viewport, stays above page
+          content (z-40, under the z-50 bar), and never inherits nav transforms. */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-18 bg-[#050505]/95 backdrop-blur-xl">
+        <div className="lg:hidden fixed inset-x-0 bottom-0 top-18 z-40 overflow-y-auto bg-[#050505]" aria-label="Mobile menu">
           <div className="flex flex-col items-center justify-center gap-8 pt-16">
             {navLinks.map((link) => (
               <a key={link.name} href={link.href} onClick={() => setIsOpen(false)}
@@ -78,7 +93,7 @@ function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 }
 
