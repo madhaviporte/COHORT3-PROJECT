@@ -1,88 +1,87 @@
 import { gsap, prefersReducedMotion } from "./gsapConfig";
 
+const HERO_ELEMENTS = [
+  "[data-navbar]",
+  "[data-hero-badge]",
+  "[data-hero-heading]",
+  "[data-hero-role]",
+  "[data-hero-intro]",
+  "[data-hero-buttons]",
+  "[data-hero-social]",
+  "[data-hero-visual]",
+];
+
 export function initHeroAnimations() {
+  // Reduced motion: make sure everything is simply visible.
   if (prefersReducedMotion) {
-    // Show everything immediately if reduced motion preferred
-    gsap.set(
-      [
-        "[data-hero-badge]",
-        "[data-hero-heading]",
-        "[data-hero-role]",
-        "[data-hero-intro]",
-        "[data-hero-buttons]",
-        "[data-hero-social]",
-        "[data-hero-visual]",
-        "[data-navbar]",
-      ],
-      { opacity: 1, y: 0, x: 0 }
-    );
+    gsap.set(HERO_ELEMENTS, { opacity: 1, x: 0, y: 0, scale: 1 });
     return;
   }
 
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-  // Navbar entrance
+  // Navbar
   tl.fromTo(
     "[data-navbar]",
-    { y: -30, opacity: 0 },
+    { y: -24, opacity: 0 },
     { y: 0, opacity: 1, duration: 0.6 },
     0
   );
 
-  // Badge
+  // Hero badge
   tl.fromTo(
     "[data-hero-badge]",
-    { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.6 },
+    { y: 16, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.5 },
     0.2
   );
 
-  // Heading
+  // Hero heading
   tl.fromTo(
     "[data-hero-heading]",
-    { y: 40, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.8 },
-    0.3
+    { y: 32, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.7 },
+    0.35
   );
 
-  // Role
+  // Role / title
   tl.fromTo(
     "[data-hero-role]",
-    { y: 25, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.7 },
-    0.5
+    { y: 22, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.6 },
+    0.55
   );
 
-  // Intro
+  // Description
   tl.fromTo(
     "[data-hero-intro]",
-    { y: 20, opacity: 0 },
+    { y: 18, opacity: 0 },
     { y: 0, opacity: 1, duration: 0.6 },
-    0.65
+    0.7
   );
 
-  // Buttons
+  // CTA buttons
   tl.fromTo(
     "[data-hero-buttons]",
-    { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.6 },
-    0.8
+    { y: 18, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.55 },
+    0.85
   );
 
   // Social links
   tl.fromTo(
     "[data-hero-social]",
-    { y: 15, opacity: 0 },
+    { y: 14, opacity: 0 },
     { y: 0, opacity: 1, duration: 0.5 },
-    0.95
+    0.98
   );
 
-  // Visual element
+  // Hero visual — last in the sequence
   tl.fromTo(
     "[data-hero-visual]",
     { scale: 0.9, opacity: 0 },
     { scale: 1, opacity: 1, duration: 0.8 },
-    0.5
+    1.08
   );
 
   return tl;

@@ -32,10 +32,10 @@ function Navbar() {
         scrolled ? "bg-[#050505]/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
       }`}
     >
-      <div className="section-container">
+      <div className="w-full max-w-[80rem] mx-auto px-5 sm:px-8 lg:px-10 xl:px-12">
         <div className="flex items-center justify-between h-18 md:h-20">
           <a href="#" className="text-xl md:text-2xl font-bold text-white hover:text-lime-400 transition-colors">
-            YOUR_NAME<span className="text-lime-400">.</span>
+            MADHAVI PORTE<span className="text-lime-400">.</span>
           </a>
 
           {/* Desktop Nav */}
