@@ -1,210 +1,184 @@
-# ShopHub — E-Commerce Product Management System
+# ShopHub – E-Commerce Product Management System
 
-A full-stack MERN application for browsing and managing product listings with secure JWT authentication.
+ShopHub is a full-stack e-commerce application built using the MERN stack. It allows users to browse products, search and filter listings, and manage their own products after logging in.
 
----
+I built this project to practice working with React, Express, MongoDB, and JWT-based authentication in a real-world application.
 
 ## Features
 
-- 🔐 **JWT Auth** — 15-minute access tokens (in-memory) + 7-day refresh tokens (httpOnly cookies with hash rotation)
-- 🛍️ **Product CRUD** — Create, read, update, delete products (ownership enforced)
-- 🔍 **Search & Filter** — Real-time search with debouncing + category tabs
-- 📄 **Pagination** — Server-side paginated product listing
-- 👤 **Dashboard** — "My Products" view with stats for authenticated users
-- 🛡️ **Security** — bcrypt passwords, CORS, rate limiting, express-validator
-
----
+- User registration and login with JWT authentication
+- Secure password hashing using bcryptjs
+- Access tokens and refresh tokens for session management
+- Refresh tokens stored as hashes in the database and sent through HTTP-only cookies
+- Browse products with search, category filters, and pagination
+- Add, edit, and delete products
+- Users can update or delete only their own products
+- My Products dashboard for managing personal listings
+- Form validation and error handling
+- Protected routes for authenticated users
+- Responsive interface for different screen sizes
 
 ## Tech Stack
 
-| Layer     | Technologies                                              |
-|-----------|-----------------------------------------------------------|
-| Frontend  | React 19 + Vite, React Router DOM v7, Axios              |
-| Backend   | Node.js, Express.js 5, MongoDB Atlas, Mongoose            |
-| Auth      | JWT (jsonwebtoken), bcryptjs, httpOnly cookies           |
-| Validation| express-validator                                         |
-| Other     | express-rate-limit, cookie-parser, cors, dotenv, nodemon |
+**Frontend**
+- React 19
+- Vite
+- React Router DOM
+- Axios
+- CSS
 
----
+**Backend**
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose
+
+**Authentication and Security**
+- JSON Web Token (JWT)
+- bcryptjs
+- express-validator
+- express-rate-limit
+- cookie-parser
+- CORS
+- dotenv
 
 ## Project Structure
 
-```
+```text
 Small E-Comm/
 ├── Backend/
 │   ├── src/
-│   │   ├── config/db.js
+│   │   ├── config/
 │   │   ├── controllers/
-│   │   │   ├── auth.controller.js
-│   │   │   └── product.controller.js
 │   │   ├── middleware/
-│   │   │   ├── authenticate.js
-│   │   │   ├── errorhandler.js
-│   │   │   └── validate.js
 │   │   ├── models/
-│   │   │   ├── User.js
-│   │   │   └── Product.js
 │   │   ├── routes/
-│   │   │   ├── auth.routes.js
-│   │   │   └── product.routes.js
 │   │   └── validators/
-│   │       ├── auth.validators.js
-│   │       └── product.validators.js
 │   ├── app.js
 │   ├── server.js
-│   ├── .env          (not committed)
-│   └── .env.example
+│   ├── .env.example
+│   └── package.json
 ├── Frontend/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── ProductCard.jsx
-│   │   │   └── ProtectedRoute.jsx
-│   │   ├── context/AuthContext.jsx
+│   │   ├── context/
 │   │   ├── Pages/
-│   │   │   ├── Login.jsx
-│   │   │   ├── Register.jsx
-│   │   │   ├── Products.jsx
-│   │   │   ├── ProductDetail.jsx
-│   │   │   ├── AddProduct.jsx
-│   │   │   ├── EditProduct.jsx
-│   │   │   ├── MyProducts.jsx
-│   │   │   └── NotFound.jsx
 │   │   ├── services/
-│   │   │   ├── api.js
-│   │   │   ├── authService.js
-│   │   │   └── productService.js
 │   │   ├── App.jsx
 │   │   ├── main.jsx
 │   │   └── index.css
+│   ├── .env.example
 │   ├── index.html
-│   ├── .env          (not committed)
-│   └── .env.example
+│   └── package.json
 └── README.md
 ```
 
----
-
-## Installation & Setup
+## Getting Started
 
 ### Prerequisites
 
-- Node.js ≥ 18
-- A MongoDB Atlas cluster (free tier works fine)
+Before running the project, make sure you have:
 
-### 1. Clone / navigate to the project
+- Node.js 18 or later
+- npm
+- A MongoDB Atlas account and database
+
+### 1. Get the project ready
+
+Open a terminal in the project directory:
 
 ```bash
 cd "Small E-Comm"
 ```
 
-### 2. Backend setup
+### 2. Set up the backend
 
 ```bash
 cd Backend
 npm install
 ```
 
-Create `Backend/.env` (use `.env.example` as reference):
+Create a `.env` file inside the `Backend` folder. Use `.env.example` as a reference and add your own MongoDB connection string and secrets.
+
+Example configuration:
 
 ```env
 PORT=3000
 NODE_ENV=development
-MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>.mongodb.net/<dbname>
-ACCESS_TOKEN_SECRET=<generate with: node -e "require('crypto').randomBytes(64).toString('hex')|console.log">
-REFRESH_TOKEN_SECRET=<same as above, different value>
+MONGODB_URI=your_mongodb_connection_string
+ACCESS_TOKEN_SECRET=your_access_token_secret
+REFRESH_TOKEN_SECRET=your_refresh_token_secret
 FRONTEND_URL=http://localhost:5173
 ```
 
-### 3. Frontend setup
+Generate separate secrets for the access and refresh tokens. Keep the actual values private and never commit your `.env` file to GitHub.
+
+### 3. Set up the frontend
+
+Open a second terminal in the project directory:
 
 ```bash
-cd ../Frontend
+cd Frontend
 npm install
 ```
 
-Create `Frontend/.env` (use `.env.example` as reference):
+Create a `.env` file inside `Frontend`:
 
 ```env
 VITE_API_URL=http://localhost:3000
 ```
 
----
+### 4. Run the application
 
-## Running the App
+Start the backend from the `Backend` folder:
 
-Open **two terminals**:
-
-**Terminal 1 — Backend:**
 ```bash
-cd Backend
 npm run dev
-# Server running on http://localhost:3000
 ```
 
-**Terminal 2 — Frontend:**
+The backend should run at `http://localhost:3000`.
+
+Start the frontend from the `Frontend` folder in a separate terminal:
+
 ```bash
-cd Frontend
 npm run dev
-# App running on http://localhost:5173
 ```
 
----
+Vite will display the local URL, usually `http://localhost:5173`.
+
+Open that URL in your browser to use the application.
 
 ## API Endpoints
 
-### Auth  (`/api/auth`)
+### Authentication
 
-| Method | Path            | Access   | Description                           |
-|--------|-----------------|----------|---------------------------------------|
-| POST   | /register       | Public   | Register new user                     |
-| POST   | /login          | Public   | Login, returns access token + cookie  |
-| POST   | /refresh-token  | Public   | Exchange refresh cookie for new token |
-| POST   | /logout         | Protected| Revoke token & clear cookie           |
-| GET    | /me             | Protected| Get current user profile              |
+Base path: `/api/auth`
 
-### Products  (`/api/products`)
+| Method | Endpoint | Access | Purpose |
+|---|---|---|---|
+| POST | `/register` | Public | Create an account |
+| POST | `/login` | Public | Log in |
+| POST | `/refresh-token` | Cookie required | Refresh the access token |
+| POST | `/logout` | Protected | Log out |
+| GET | `/me` | Protected | Get the logged-in user's profile |
 
-| Method | Path   | Access            | Description                         |
-|--------|--------|-------------------|-------------------------------------|
-| GET    | /      | Public            | List products (pagination, search)  |
-| GET    | /:id   | Public            | Get single product                  |
-| POST   | /      | Protected         | Create product                      |
-| PUT    | /:id   | Protected (owner) | Update product                      |
-| DELETE | /:id   | Protected (owner) | Delete product                      |
+### Products
 
-**Query parameters for `GET /api/products`:**
+Base path: `/api/products`
 
-| Param    | Type   | Default | Description                |
-|----------|--------|---------|----------------------------|
-| page     | number | 1       | Page number                |
-| limit    | number | 10      | Items per page (max 100)   |
-| search   | string | —       | Search by name/description |
-| category | string | —       | Filter by category name    |
+| Method | Endpoint | Access | Purpose |
+|---|---|---|---|
+| GET | `/` | Public | Get the product list |
+| GET | `/:id` | Public | Get a product by ID |
+| POST | `/` | Protected | Create a product |
+| PUT | `/:id` | Product owner | Update a product |
+| DELETE | `/:id` | Product owner | Delete a product |
 
----
+### Product Listing Query Parameters
 
-## Testing the Application
+The product listing endpoint supports the following parameters:
 
-1. Start backend (port 3000) and frontend (port 5173)
-2. Open `http://localhost:5173`
-3. Register a new account at `/register`
-4. Log in at `/login`
-5. Add a product at `/add-product`
-6. Browse the catalog at `/`
-7. Click a product title or image to see the detail page
-8. Visit `/my-products` for your dashboard
-9. Edit or delete products you own
-10. Log out — session is cleared from cookies and memory
-
----
-
-## Security Notes
-
-- Passwords are **bcrypt-hashed** (salt rounds = 10) — never stored in plain text
-- Access tokens live **in memory only** (React state) — not in localStorage
-- Refresh tokens are stored as **bcrypt hashes** in MongoDB — raw token never persists
-- Refresh token is sent via **httpOnly cookie** — JavaScript cannot read it
-- Every successful refresh **rotates** the token (old one is immediately invalidated)
-- Login endpoint is **rate-limited** (10 attempts / 15 min per IP)
-- CORS is restricted to `http://localhost:5173` only
+| Parameter | Default | Purpose |
+|---|---|---|
+| `page` | `1` | Select the page |
+| `limit` | `10` | Set the number of products
