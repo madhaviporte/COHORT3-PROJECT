@@ -13,7 +13,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { fetchProducts } from "../services/productService.js";
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../context/useAuth.js";
 import ProductCard from "../components/ProductCard.jsx";
 
 const CATEGORIES = [
@@ -52,6 +52,7 @@ const Products = () => {
 
   // Reset page when category changes
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPage(1);
   }, [category]);
 
@@ -74,6 +75,7 @@ const Products = () => {
   }, [page, search, category]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadProducts();
   }, [loadProducts]);
 

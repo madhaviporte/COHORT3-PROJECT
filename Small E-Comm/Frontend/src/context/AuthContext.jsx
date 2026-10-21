@@ -15,12 +15,13 @@
  *   If refresh fails   → show logged-out state (no token in memory).
  */
 
-import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import { loginUser, logoutUser, refreshAccessToken } from "../services/authService.js";
 import { setAccessToken, clearAccessToken } from "../services/api.js";
 
-// Create the context
+// Create the context (exported as default so useAuth.js can import it without circular deps)
 const AuthContext = createContext(null);
+export default AuthContext;
 
 // ---------------------------------------------------------------------------
 // AuthProvider — wraps the whole app, manages auth state
@@ -95,13 +96,3 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// ---------------------------------------------------------------------------
-// useAuth() — custom hook for consuming the context (cleaner than useContext)
-// ---------------------------------------------------------------------------
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used inside an AuthProvider");
-  }
-  return context;
-};

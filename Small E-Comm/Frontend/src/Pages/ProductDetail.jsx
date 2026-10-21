@@ -7,7 +7,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { fetchProduct, deleteProduct } from "../services/productService.js";
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../context/useAuth.js";
 
 const DEFAULT_IMAGE =
   "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80";

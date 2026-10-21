@@ -11,7 +11,7 @@
 
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../context/useAuth.js";
 import { deleteProduct } from "../services/productService.js";
 
 const DEFAULT_IMAGE =

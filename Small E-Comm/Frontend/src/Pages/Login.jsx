@@ -6,9 +6,9 @@
  * Shows a success banner if user just registered (?registered=true in URL)
  */
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../context/useAuth.js";
 
 const Login = () => {
   const navigate = useNavigate();
