@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment secrets — NEVER commit these
+.env
+backend/.env
+frontend/.env
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
