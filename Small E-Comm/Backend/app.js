@@ -23,6 +23,20 @@ import errorHandler from "./src/middleware/errorhandler.js";
 const app = express();
 
 // ---------------------------------------------------------------------------
+// Trust proxy — REQUIRED in deployment (Render, Heroku, Vercel, etc.)
+// Behind a hosting proxy, Express sees the proxy's IP as the client unless
+// it is told how many proxy hops to trust. Without this setting:
+//   1. req.ip is the SAME proxy IP for every visitor, so the login rate
+//      limiter would count all users together (10 logins / 15 min for the
+//      entire deployment) and lock everyone out with 429.
+//   2. express-rate-limit logs an ERR_ERL_UNEXPECTED_X_FORWARDED_FOR error.
+// Value "1" = trust exactly one proxy hop (the hosting provider's router),
+// which is the recommended, least-permissive setting. With no proxy locally,
+// req.ip still resolves to the real socket address, so dev is unchanged.
+// ---------------------------------------------------------------------------
+app.set("trust proxy", 1);
+
+// ---------------------------------------------------------------------------
 // CORS Configuration
 // Allows only the frontend origin to make requests with credentials (cookies).
 // Credentials: true is required for httpOnly cookies to be sent cross-origin.
