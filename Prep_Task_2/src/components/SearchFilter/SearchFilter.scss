@@ -1,0 +1,39 @@
+
+@use '../../styles/variables' as *;
+
+.search-filter {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+
+  input,
+  select {
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid $border;
+    border-radius: $radius-sm;
+    background: $surface;
+    color: $text-primary;
+  }
+
+  input {
+    flex: 1;
+  }
+
+  select {
+    max-width: 180px;
+  }
+
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+
+    input {
+      flex-basis: 100%;
+    }
+
+    select {
+      flex: 1;
+      max-width: none;
+    }
+  }
+}

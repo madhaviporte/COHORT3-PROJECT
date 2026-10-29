@@ -1,0 +1,14 @@
+
+@use './styles/variables' as *;
+
+.app {
+  width: 100%;
+  max-width: 1600px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 28px;
+
+  @media (max-width: 600px) {
+    padding: 16px;
+  }
+}

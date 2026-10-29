@@ -1,0 +1,58 @@
+
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  @include flex-between;
+  gap: 16px;
+  margin-bottom: 28px;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+
+  &__logo {
+    @include flex-center;
+    width: 42px;
+    height: 42px;
+    border-radius: $radius-md;
+    background: $primary;
+    color: white;
+    font-weight: 800;
+  }
+
+  &__add-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: $radius-sm;
+    background: $primary;
+    color: white;
+    font-weight: 600;
+
+    &:hover {
+      background: $primary-hover;
+    }
+  }
+
+  @media (max-width: 600px) {
+    align-items: flex-start;
+
+    &__brand h1 {
+      font-size: 20px;
+    }
+
+    &__add-button {
+      padding: 10px 12px;
+    }
+  }
+}

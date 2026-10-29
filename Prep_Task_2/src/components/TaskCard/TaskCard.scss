@@ -1,0 +1,121 @@
+
+@use '../../styles/variables' as *;
+
+.task-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid $border;
+  border-left: 4px solid $primary;
+  border-radius: $radius-md;
+  background: $surface;
+  box-shadow: $shadow-card;
+  transition: box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    box-shadow: 0 5px 16px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+  }
+
+  &--high {
+    border-left-color: $priority-high;
+  }
+
+  &--medium {
+    border-left-color: $priority-medium;
+  }
+
+  &--low {
+    border-left-color: $priority-low;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  &__priority {
+    padding: 4px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+
+    &--high {
+      color: #dc2626;
+      background: #fee2e2;
+    }
+
+    &--medium {
+      color: #b45309;
+      background: #fef3c7;
+    }
+
+    &--low {
+      color: #15803d;
+      background: #dcfce7;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 5px;
+
+    button {
+      display: grid;
+      place-items: center;
+      padding: 5px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: $text-secondary;
+
+      &:hover {
+        background: #eef2ff;
+        color: $primary;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    overflow-wrap: anywhere;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  &__description {
+    margin-bottom: 16px;
+    color: $text-secondary;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__date {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: $text-secondary;
+    font-size: 12px;
+  }
+
+  &__status {
+    max-width: 100%;
+    padding: 5px 6px;
+    border: 1px solid $border;
+    border-radius: 6px;
+    background: white;
+    color: $text-secondary;
+    font-size: 11px;
+  }
+}
