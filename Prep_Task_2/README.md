@@ -1,16 +1,71 @@
-# React + Vite
+# Kanban Task Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple task management app built using React. It helps you add tasks, update them, and keep track of their status.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add new tasks
+- Edit and delete tasks
+- Change task status
+- Search tasks
+- Filter tasks by status and priority
+- Save tasks in local storage
+- Responsive design for mobile and desktop
 
-## React Compiler
+## Tech Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- JavaScript
+- SCSS
+- Vite
+- Lucide React
 
-## Expanding the ESLint configuration
+## How to Run
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Clone the repository:
+
+```bash
+git clone YOUR_REPOSITORY_URL
+```
+
+Go to the project folder:
+
+```bash
+cd YOUR_PROJECT_FOLDER
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Start the app:
+
+```bash
+npm run dev
+```
+
+## Build
+
+To create the production build, run:
+
+```bash
+npm run build
+```
+
+To preview the build locally:
+
+```bash
+npm run preview
+```
+
+## Data Storage
+
+Tasks are saved in the browser using local storage, so they stay there even after refreshing the page.
+
+The data is stored in the current browser and is not shared across devices.
+
+## Deployment
+
+The project can be deployed using Vercel. Use `npm run build` as the build command and `dist` as the output directory.
