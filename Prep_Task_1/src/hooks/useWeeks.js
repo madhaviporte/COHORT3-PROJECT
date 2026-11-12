@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import useLocalStorage from './useLocalStorage';
-import { createDefaultWeek } from '../data/defaultSections';
+import { createDefaultWeek, createLegacySeedWeek } from '../data/defaultSections';
 import { normalizeWeek, normalizeWeeks } from '../utils/weeks';
 import { generateId } from '../utils/id';
 
@@ -28,7 +28,7 @@ function buildLegacyWeek() {
 
     if (!legacyQuestions && !dsaProgress && !gitProgress && !fullstackProgress) return null;
 
-    const week = createDefaultWeek('Week 1', 'Imported from the earlier single-week tracker');
+    const week = createLegacySeedWeek('Week 1', 'Imported from the earlier single-week tracker');
 
     const dsaMap = parseLegacyMap(dsaProgress);
     if (dsaMap) {
